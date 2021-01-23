@@ -1,0 +1,111 @@
+@font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue',
+  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol', sans-serif;
+
+// 复写定制 gatsby 样式
+
+body {
+  font-size: 14px;
+  font-family: @font-family;
+
+  @background: #f2f4f7;
+
+  height: 100vh;
+  width: 100vw;
+  background: @background !important;
+
+  #gatsby-focus-wrapper {
+    background: @background;
+  }
+
+  @header-height: 28px;
+  @main-max-width: 1232px;
+  @main-padding: 24px;
+
+  .site-header {
+    margin: 0 auto;
+    padding: 1rem @main-padding;
+    background-color: #009cff;
+    color: #fff;
+
+    .site-title {
+      max-width: calc(@main-max-width - @main-padding * 2);
+    }
+  }
+
+  main {
+    min-height: calc(100vh - 2rem - @header-height - 32px - 52px);
+    margin: 16px auto;
+    max-width: @main-max-width;
+    padding: 0 @main-padding;
+  }
+
+  footer {
+    height: 52px;
+    padding: 0 24px;
+  }
+
+  .site-header {
+    display: flex;
+    align-items: center;
+
+    .site-title {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    h1 {
+      // 字体
+      font-family: @font-family;
+      font-size: 20px;
+      line-height: @header-height;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: #fff;
+    }
+
+    h1,
+    h1 a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  footer {
+    font-family: @font-family;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.85);
+
+    .action-link {
+      margin: 0 4px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .action-link:first-of-type {
+      margin-left: 12px;
+    }
+
+    .github-icon,
+    .wechat-icon {
+      font-size: 16px;
+      svg {
+        fill: #fff;
+        &:hover {
+          fill: #009cff;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .wechat-icon {
+      transform: scale(1.2);
+    }
+  }
+}

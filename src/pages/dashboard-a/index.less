@@ -1,0 +1,34 @@
+@import '@/styles/base.less';
+
+.x-canvas {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 90vh;
+  width: 100%;
+  overflow: hidden;
+
+  // 自定义 plot-container 样式
+  .x-plot {
+    display: flex;
+    flex-direction: column;
+
+    @header-height: 42px;
+    .header {
+      cursor: move;
+    }
+    // 带头
+    .header + .plot-container {
+      height: calc(100% - @header-height) !important;
+    }
+
+    .plot-container {
+      width: 100%;
+      flex: 1;
+    }
+  }
+
+  // 自定义 react-grid-layout 样式
+  .react-grid-item:not(.react-grid-placeholder) {
+    border: 1px solid #efefef;
+  }
+}

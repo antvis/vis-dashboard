@@ -1,0 +1,46 @@
+{
+  "name": "@antv/vis-dashboard",
+  "description": "G2Plot 可视化精选",
+  "version": "0.1.0",
+  "author": "visiky <736929286@qq.com>",
+  "keywords": [
+    "g2plot",
+    "visualization",
+    "dashboard"
+  ],
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.5.0",
+    "@antv/g2plot": "^2.3.13",
+    "antd": "^4.10.3",
+    "lodash": "^4.17.20",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-grid-layout": "^1.2.0",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@types/react": "^17.0.0",
+    "axios": "^0.21.1",
+    "gatsby": "^2.26.1",
+    "gatsby-plugin-antd": "^2.2.0",
+    "gatsby-plugin-less": "^4.6.0",
+    "gh-pages": "^3.1.0",
+    "less": "^4.1.0",
+    "prettier": "2.2.1",
+    "react-dom": "^17.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antvis/vis-dashboard"
+  },
+  "license": "MIT"
+}

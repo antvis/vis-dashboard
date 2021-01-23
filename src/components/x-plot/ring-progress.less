@@ -1,0 +1,21 @@
+.plot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .ring-progress-container {
+    flex: 1;
+    height: 100%;
+
+    .statistic-icon-container {
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+      svg:not(:root) {
+        overflow: visible;
+      }
+    }
+  }
+}
