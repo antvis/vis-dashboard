@@ -7,7 +7,40 @@ import { XComponentProps } from '@/types';
 import { getData } from '@/utils/get-data';
 import { getColor } from './area';
 
-type XBarProps = XComponentProps<BarOptions>;
+type XBarProps = XComponentProps<
+  BarOptions & {
+    styleType?: string | 'rank';
+  }
+>;
+
+/**
+ * 生成排行序列号
+ */
+const generateOrders = (
+  data: object[],
+  yField: string,
+  colors: string | string[]
+) => {
+  const color = _.isArray(colors) ? colors[0] : colors;
+  return _.map(data, (d, idx) => {
+    return {
+      type: 'html',
+      position: [d[yField], 0],
+      html: (container) => {
+        // 置于底层, 避免遮挡 elements
+        container.style['width'] = 0;
+        return `<div style="transform:translate(-100%, -50%);padding-right:16px;width:120px;display:flex;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:${
+            idx < 3 ? color : 'rgba(0,0,0,0.15)'
+          };color:#fff;font-size:12px;margin-right:8px;">${idx + 1}</span>
+        <span style="display:inline-block;color:rgba(0,0,0,0.85);font-size:12px;width:calc(100% - 24px);white-space:nowrap;text-overflow:ellipsis;">${
+          d[yField]
+        }</span>
+        </div>`;
+      },
+    };
+  });
+};
 
 export const XBar: React.FC<XBarProps> = props => {
   const { attributes } = props;
@@ -17,23 +50,25 @@ export const XBar: React.FC<XBarProps> = props => {
     data: [],
     xField: '',
     yField: '',
+    appendPadding: [0, 0, 0, 120],
   });
 
   useEffect(() => {
     getData(attributes.data).then(data => {
+      const color = getColor(attributes);
+      const rankType = attributes.styleType === 'rank';
       updateConfig(
-        _.assign({}, config, attributes, { data, color: getColor(attributes) })
+        _.assign({}, config, attributes, {
+          data,
+          color,
+          appendPadding: rankType ? [0, 0, 0, 120] : 0,
+          annotations: rankType
+            ? generateOrders(data, attributes.yField, color as any)
+            : [],
+        })
       );
     });
   }, [attributes]);
-
-  useEffect(() => {
-    if (chart) {
-      getData(attributes.data).then(data => {
-        chart.changeData(data);
-      });
-    }
-  }, [attributes.data]);
 
   return (
     <div data-type="bar" className="full x-plot">

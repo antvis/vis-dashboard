@@ -99,16 +99,19 @@ export const reportJSON = {
         id: 'c',
         attributes: {
           title: '产品好评度排行',
+          /** 非 G2Plot 树形，自定义条形图展示样式 */
+          styleType: 'rank',
           data:
             'https://gw.alipayobjects.com/os/antfincdn/R%26O2e0Z0w1/chanpinhaopingdupaihang-data.json',
           xField: 'value',
           yField: 'type',
           barStyle: { lineCap: 'round' },
-          barBackground: { style: { fill: 'rgba(0,0,0,0.06)' } },
+          barBackground: { style: { fill: 'rgba(0,0,0,0.06)', radius: 10 } },
           minBarWidth: 10,
           maxBarWidth: 10,
           xAxis: false,
-          yAxis: { line: false, tickLine: false },
+          yAxis: false,
+          label: false,
           interactions: [{ type: 'active-region', enable: false }],
           tooltip: {
             showCrosshairs: false,
@@ -264,7 +267,7 @@ export const reportJSON = {
           tooltip: {
             showCrosshairs: false,
             showTitle: false,
-              itemTpl: `<li class="g2-tooltip-list-item" data-index={index} style="margin-bottom:4px;display:flex;">
+            itemTpl: `<li class="g2-tooltip-list-item" data-index={index} style="margin-bottom:4px;display:flex;">
                 <span style="background-color:{color};" class="g2-tooltip-marker"></span>
                 <span class="g2-tooltip-name">{title}:</span>
                 <span class="g2-tooltip-value">{value}</span>
