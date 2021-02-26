@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GridLayout, { WidthProvider, Layout } from 'react-grid-layout';
 import { XComponentProps } from '@/types';
+import { isEditMode } from '@/utils/location';
 
 const ReactGridLayout = WidthProvider(GridLayout);
 type XProps = XComponentProps<{
@@ -22,9 +23,10 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
   return (
     <div className="x-panel full">
       <ReactGridLayout
-        layout={layout.map(d => ({ ...d, isDraggable: true }))}
+        layout={layout}
         cols={24}
         rowHeight={10}
+        isResizable={isEditMode()}
         // This turns off compaction so you can place items wherever.
         // verticalCompact={false}
         // This turns off rearrangement so items will not be pushed arround.
