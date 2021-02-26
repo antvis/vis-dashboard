@@ -7,8 +7,17 @@
 ![Latest commit](https://badgen.net/github/last-commit/antvis/G2Plot)
 [![build Status](https://github.com/antvis/G2Plot/workflows/build/badge.svg?branch=master)](https://github.com/antvis/G2Plot/actions?query=workflow%3Abuild)
 
-## Contributing
+## 贡献
 
+```bash
+git clone https://github.com/antvis/vis-dashboard.git
+
+cd vis-dashboard
+
+npm install && npm start
+```
+
+🏄 贡献你的 dashboard, 如: [dashboard-a](./src/pages/dashboard-a)
 
 ## License
 

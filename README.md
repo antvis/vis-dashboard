@@ -9,6 +9,15 @@ Dashboard built with [G2Plot](https://github.com/antvis/g2plot), a charting libr
 
 ## Contributing
 
+```bash
+git clone https://github.com/antvis/vis-dashboard.git
+
+cd vis-dashboard
+
+npm install && npm start
+```
+
+🏄 contribute your dashboard as what do in [dashboard-a](./src/pages/dashboard-a)
 
 ## License
 
