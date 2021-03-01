@@ -20,6 +20,9 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
     // console.log('layout', newLayout);
   };
 
+  if (!layout.length) {
+    return <div></div>;
+  }
   return (
     <div className="x-panel full">
       <ReactGridLayout
