@@ -41,6 +41,7 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
         // todo 暂时放在头部
         draggableHandle=".header"
         // Margin between items [x, y] in px.
+        containerPadding={[0, 0]}
         margin={[16, 16]}
       >
         {children}
