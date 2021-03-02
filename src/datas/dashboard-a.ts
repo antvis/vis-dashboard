@@ -1,10 +1,11 @@
 import { G2 } from '@antv/g2plot';
 import numeral from 'numeral';
 
-const TooltipContainerStyle = `z-index:20;display: flex;background-color: rgb(255, 255, 255); box-shadow: rgb(174, 174, 174) 0px 0px 10px; border-radius: 3px; color: rgb(89, 89, 89); font-size: 12px; line-height: 12px; padding: 0px 12px; opacity: 0.95; pointer-events: none; padding:4px 10px;`
+const TooltipContainerStyle = `z-index:20;display: flex;box-shadow:rgb(174, 174, 174) 0px 0px 10px; border-radius: 3px;font-size: 12px; line-height: 12px; padding: 0px 12px;pointer-events: none; padding:4px 10px;`
 const TooltipMarkerStyle = `width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px;`
 
 export const reportJSON = {
+  theme: 'light',
   layouts: {
     root: [
       { i: 'a', x: 0, y: 0, w: 24, h: 6 },
@@ -238,16 +239,16 @@ export const reportJSON = {
                 // positionY: (Math.sqrt(2) / 8 + 0.5)
                 const offsetY = markerSize * (Math.sqrt(2) / 8 + 0.5);
                 return `<div style="position:relative;height:${size}px;width:${size}px;transform:translate(-50%,-50%);display:flex;align-items: center;justify-content: center;flex-direction: column;">
-                <div style="z-index:-2;position:absolute;left:${
+                <div class="black-background" style="z-index:-2;position:absolute;left:${
                   radius / 2
                 }px;top:${
                   radius / 2
                 }px;height:${markerSize}px;width:${markerSize}px;opacity:0.25;transform:translate(${offsetX}px,${offsetY}px) rotate(${
                   (0.58 - Math.sqrt(2) / 8) * 100
                 }deg);background: #000000;"></div>
-                <div style="z-index:-1;position:absolute;top:0;left:0;right:0;bottom:0;border-radius:${size}px;background:#FFFFFF;box-shadow: 0 3px 6px -4px rgba(0,0,0,0.12), 0 6px 16px 0 rgba(0,0,0,0.08), 0 9px 28px 8px rgba(0,0,0,0.05);"></div>
+                <div class="custom-gauge-anntation" style="z-index:-1;position:absolute;top:0;left:0;right:0;bottom:0;border-radius:${size}px;background:#FFFFFF;box-shadow: 0 3px 6px -4px rgba(0,0,0,0.12), 0 6px 16px 0 rgba(0,0,0,0.08), 0 9px 28px 8px rgba(0,0,0,0.05);"></div>
                    <div style="color:#30BF78;opacity: 1;font-weight: 700;font-size: 18px;">优秀</div>
-                   <div style="color:rgba(0,0,0,0.45);font-size: 12px">卫生评级</div>
+                   <div class="black-color" style="color:#000;opacity:0.45;font-size: 12px;">卫生评级</div>
                 </div>`;
               },
             },
@@ -290,12 +291,12 @@ export const reportJSON = {
                   content += `<div data-index=${index} style="display:flex; padding:0px;margin:8px 0px;justify-content:space-between;font-size:12px;">
                     <span>
                       <span style="${TooltipMarkerStyle};background-color:${model.color};" class="g2-tooltip-marker"></span>
-                      <span class="g2-tooltip-name">${model.data['type']}</span>
+                      <span class="g2-tooltip-name" style="opacity:0.65;">${model.data['type']}</span>
                     </span>
-                    <span class="g2-tooltip-value">${model.data['value']}</span>
+                    <span class="g2-tooltip-value" style="opacity:0.65;">${model.data['value']}</span>
                   </div>`;
                 });
-                return `<div style="${TooltipContainerStyle};width:${width}px;"><div style="width:100%;">${content}</div></div>`;
+                return `<div class="black-color custom-tooltip" style="${TooltipContainerStyle};width:${width}px;background-color:#fff;color:#000;opacity: 0.95;"><div style="width:100%;">${content}</div></div>`;
               },
             },
             {
@@ -304,7 +305,7 @@ export const reportJSON = {
               html: (container, view) => {
                 const width = view.getCoordinate().getRadius() * 0.4;
                 container.style.transform = `translate(-50%, -${width}px)`;
-                return `<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="${width}px" height="${width}px" fill="rgba(0,0,0,0.65)"><path d="M689.00486 572.124909c79.006322-55.180406 130.7762-146.675053 130.7762-250.346961 0-168.551225-136.490232-305.173608-305.173608-305.173608-168.551225 0-305.087201 136.621367-305.087201 305.173608 0 103.580419 51.547254 194.921567 130.468185 250.079609C162.135773 641.653928 36.012326 814.3232 36.012326 1016.886178c0 0.086407 0 0.086407 0 0.086407l85.691159 0c0-0.217542 0-0.484895 0-0.707519 0-200.834842 151.237333-365.976556 346.051145-388.827599 1.990406-0.131135 54.644684-4.739159 97.912132 0.729883 1.065345 0.244989 2.217097 0.331396 3.324121 0.553004l0.484895 0c189.942501 27.190699 335.996442 190.119381 335.996442 387.544712 0 0.222625 0 0.489977 0 0.707519l87.023857 0c0 0 0 0 0-0.086407C992.496077 814.544808 866.635916 641.961943 689.00486 572.124909L689.00486 572.124909zM514.785349 550.557769c-126.259665 0-228.693415-102.34226-228.693415-228.64767S388.525684 93.262429 514.785349 93.262429c126.21392 0 228.64767 102.34226 228.64767 228.64767S640.999269 550.557769 514.785349 550.557769L514.785349 550.557769zM514.785349 550.557769" p-id="2751"></path></svg>`;
+                return `<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="${width}px" height="${width}px" fill="#000" opacity="0.65"><path d="M689.00486 572.124909c79.006322-55.180406 130.7762-146.675053 130.7762-250.346961 0-168.551225-136.490232-305.173608-305.173608-305.173608-168.551225 0-305.087201 136.621367-305.087201 305.173608 0 103.580419 51.547254 194.921567 130.468185 250.079609C162.135773 641.653928 36.012326 814.3232 36.012326 1016.886178c0 0.086407 0 0.086407 0 0.086407l85.691159 0c0-0.217542 0-0.484895 0-0.707519 0-200.834842 151.237333-365.976556 346.051145-388.827599 1.990406-0.131135 54.644684-4.739159 97.912132 0.729883 1.065345 0.244989 2.217097 0.331396 3.324121 0.553004l0.484895 0c189.942501 27.190699 335.996442 190.119381 335.996442 387.544712 0 0.222625 0 0.489977 0 0.707519l87.023857 0c0 0 0 0 0-0.086407C992.496077 814.544808 866.635916 641.961943 689.00486 572.124909L689.00486 572.124909zM514.785349 550.557769c-126.259665 0-228.693415-102.34226-228.693415-228.64767S388.525684 93.262429 514.785349 93.262429c126.21392 0 228.64767 102.34226 228.64767 228.64767S640.999269 550.557769 514.785349 550.557769L514.785349 550.557769zM514.785349 550.557769" p-id="2751"></path></svg>`;
               },
             },
             {
@@ -319,8 +320,8 @@ export const reportJSON = {
                     : 'translate(-50%, 8px)';
                 const sum = view.getData().reduce((a, b) => a + b.value, 0);
                 return `<div>
-                  <span style="font-size:32px;line-height:32px;color:#000;opacity:0.65;">${sum}</span>
-                  <span style="font-size:18px;color:#000;opacity:0.45;">人</span>
+                  <span class="black-color" style="font-size:32px;line-height:32px;opacity:0.65;color:#000;">${sum}</span>
+                  <span class="black-color" style="font-size:18px;opacity:0.45;color:#000;vertical-align: bottom;">人</span>
                 </div>`;
               },
             },
@@ -503,7 +504,7 @@ export const reportJSON = {
               customHtml: (container, view) => {
                 const width = view.getCoordinate().getRadius() * 0.4;
                 container.style.transform = `translate(-50%, -${width}px)`;
-                return `<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="${width}px" height="${width}px" fill="rgba(0,0,0,0.65)"><path d="M689.00486 572.124909c79.006322-55.180406 130.7762-146.675053 130.7762-250.346961 0-168.551225-136.490232-305.173608-305.173608-305.173608-168.551225 0-305.087201 136.621367-305.087201 305.173608 0 103.580419 51.547254 194.921567 130.468185 250.079609C162.135773 641.653928 36.012326 814.3232 36.012326 1016.886178c0 0.086407 0 0.086407 0 0.086407l85.691159 0c0-0.217542 0-0.484895 0-0.707519 0-200.834842 151.237333-365.976556 346.051145-388.827599 1.990406-0.131135 54.644684-4.739159 97.912132 0.729883 1.065345 0.244989 2.217097 0.331396 3.324121 0.553004l0.484895 0c189.942501 27.190699 335.996442 190.119381 335.996442 387.544712 0 0.222625 0 0.489977 0 0.707519l87.023857 0c0 0 0 0 0-0.086407C992.496077 814.544808 866.635916 641.961943 689.00486 572.124909L689.00486 572.124909zM514.785349 550.557769c-126.259665 0-228.693415-102.34226-228.693415-228.64767S388.525684 93.262429 514.785349 93.262429c126.21392 0 228.64767 102.34226 228.64767 228.64767S640.999269 550.557769 514.785349 550.557769L514.785349 550.557769zM514.785349 550.557769" p-id="2751"></path></svg>`;
+                return `<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="${width}px" height="${width}px" fill="#000" opacity="0.65"><path d="M689.00486 572.124909c79.006322-55.180406 130.7762-146.675053 130.7762-250.346961 0-168.551225-136.490232-305.173608-305.173608-305.173608-168.551225 0-305.087201 136.621367-305.087201 305.173608 0 103.580419 51.547254 194.921567 130.468185 250.079609C162.135773 641.653928 36.012326 814.3232 36.012326 1016.886178c0 0.086407 0 0.086407 0 0.086407l85.691159 0c0-0.217542 0-0.484895 0-0.707519 0-200.834842 151.237333-365.976556 346.051145-388.827599 1.990406-0.131135 54.644684-4.739159 97.912132 0.729883 1.065345 0.244989 2.217097 0.331396 3.324121 0.553004l0.484895 0c189.942501 27.190699 335.996442 190.119381 335.996442 387.544712 0 0.222625 0 0.489977 0 0.707519l87.023857 0c0 0 0 0 0-0.086407C992.496077 814.544808 866.635916 641.961943 689.00486 572.124909L689.00486 572.124909zM514.785349 550.557769c-126.259665 0-228.693415-102.34226-228.693415-228.64767S388.525684 93.262429 514.785349 93.262429c126.21392 0 228.64767 102.34226 228.64767 228.64767S640.999269 550.557769 514.785349 550.557769L514.785349 550.557769zM514.785349 550.557769" p-id="2751"></path></svg>`;
               },
             },
             content: {
@@ -515,9 +516,9 @@ export const reportJSON = {
                     ? 'translate(-50%, 0px) scale(0.8)'
                     : 'translate(-50%, 8px)';
                 const sum = view.getData().reduce((a, b) => a + b.value, 0);
-                return `<div style="font-weight: normal;">
-                  <span style="font-size:32px;line-height:32px;color:#000;opacity:0.65;">${sum}</span>
-                  <span style="font-size:18px;color:#000;opacity:0.45;">人</span>
+                return `<div style="font-weight: normal;font-size:18px;">
+                  <span class="black-color" style="font-size:32px;line-height:32px;opacity:0.65;color:#000;">${sum}</span>
+                  <span class="black-color" style="font-size:18px;opacity:0.45;color:#000;">人</span>
                 </div>`;
               },
             },

@@ -11,14 +11,14 @@ import './parse.less';
  * @returns {ReactElement}
  */
 export const parse = (report: Report) => {
-  const { layouts, content: reportNode } = report;
+  const { layouts, content: reportNode, theme } = report;
   let subComponents = [];
   const { children } = reportNode;
   if (children?.length > 0) {
     subComponents = children.map((child: ReportNode) => {
       return (
         <div key={child.id} className="x-component">
-          {parse({ layouts, content: child })}
+          {parse({ layouts, content: child, theme })}
         </div>
       );
     });
@@ -34,7 +34,7 @@ export const parse = (report: Report) => {
       key: `${reportNode.id}-d`,
       id: `${reportNode.id}-d`,
       tag: reportNode.tag,
-      attributes: _.assign({}, { color: THEME_COLORS }, reportNode.attributes, {
+      attributes: _.assign({}, { color: THEME_COLORS, theme }, reportNode.attributes, {
         layout: _.get(layouts, reportNode.id, []),
       }),
     },

@@ -25,25 +25,15 @@ body {
   @main-max-width: 1232px;
   @main-padding: 24px;
 
-  .site-header {
-    margin: 0 auto;
-    padding: 1rem @main-padding;
-    background-color: #009cff;
-    color: #fff;
-
-    .site-title {
-      max-width: calc(@main-max-width - @main-padding * 2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
   main {
     min-height: calc(100vh - 2rem - @header-height - 32px - 52px);
     margin: 16px auto;
     max-width: @main-max-width;
     padding: 0 @main-padding;
+  }
+
+  header {
+    background-color: #009cff;
   }
 
   footer {
@@ -54,9 +44,16 @@ body {
   .site-header {
     display: flex;
     align-items: center;
+    margin: 0 auto;
+    padding: 1rem @main-padding;
+    color: #fff;
 
     .site-title {
       width: 100%;
+      max-width: calc(@main-max-width - @main-padding * 2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin: 0 auto;
 
       // 主题切换开关
@@ -64,12 +61,11 @@ body {
         transition: all ease 0.3s;
 
         // 未选中时的样式
-        .ant-switch-handle::before{
+        .ant-switch-handle::before {
           background: @theme-light-img center center;
         }
         // 选中时的样式
         &.ant-switch-checked {
-          background-color: rgba(0, 0, 0, 0.25);
           .ant-switch-handle::before {
             background: @theme-dark-img center center;
           }

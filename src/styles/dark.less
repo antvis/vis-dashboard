@@ -1,0 +1,83 @@
+// 对应 layout.less
+body[data-theme='dark'] {
+  @background: rgba(0, 0, 0, 1);
+
+  background: @background !important;
+
+  #gatsby-focus-wrapper {
+    background: @background;
+  }
+
+  header,
+  footer {
+    background: #141414;
+  }
+
+  .theme-switcher.ant-switch-checked {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+// 对应 parse.less
+body[data-theme='dark'] {
+  background-color: rgba(0, 0, 0, 1);
+
+  .x-component {
+    background-color: #141414;
+    box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.32),
+      0 9px 28px 0 rgba(0, 0, 0, 0.2), 0 12px 48px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .x-component .header .title {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  // 针对所有 annotation
+  .plot-container .g2-html-annotation {
+    color: rgba(255, 255, 255, 0.85) !important;
+
+    svg[fill='#000'] {
+      fill: #fff !important;
+    }
+  }
+}
+
+// 对应 base.less
+body[data-theme='dark'] {
+  // 自定义 react-grid-layout 样式
+  .react-grid-item:not(.react-grid-placeholder) {
+    border: 1px solid #1f1f1f;
+  }
+}
+
+// 实际开发存在业务含义的; 强行反转颜色
+body[data-theme='dark'] {
+  .black-background {
+    background-color: #fff !important;
+  }
+
+  .black-background-15 {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .white-background {
+    background-color: #000 !important;
+  }
+
+  .white-color {
+    color: #000 !important;
+  }
+
+  .black-color {
+    color: #fff !important;
+  }
+
+  .custom-gauge-anntation {
+    background: #262626 !important;
+  }
+
+  .custom-tooltip {
+    box-shadow: none !important;
+    background-color: #141414 !important;
+  }
+}

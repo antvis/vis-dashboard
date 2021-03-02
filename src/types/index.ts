@@ -17,6 +17,8 @@ export type ReportNode<A = Attributes> = {
 };
 
 export type Report = {
+  // 主题
+  theme?: string;
   layouts: Record<string, any[]>;
   content: ReportNode;
 };

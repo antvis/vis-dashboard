@@ -21,7 +21,22 @@ export const XSankey: React.FC<XSankeyProps> = props => {
 
   useEffect(() => {
     getData(attributes.data).then(data => {
-      updateConfig(_.assign({}, config, attributes, { data }));
+      const { theme } = attributes;
+      const label = {
+        fields: ['x', 'name'],
+        callback: (x: number[], name: string) => {
+          const isLast = x[1] === 1; // 最后一列靠边的节点
+          return {
+            style: {
+              fill: theme === 'dark' ? 'rgba(255,255,255,0.65)' : '#545454',
+              textAlign: isLast ? 'end' : 'start',
+            },
+            offsetX: isLast ? -8 : 8,
+            content: name,
+          };
+        },
+      };
+      updateConfig(_.assign({}, config, attributes, { data, label }));
     });
   }, [attributes]);
 
