@@ -12,7 +12,6 @@ const SecondPage = () => {
       // temp1[0].target.getAttribute(temp1[0].attributeName)
       if (record.target.nodeName === 'BODY' && record.attributeName === 'data-theme') {
         const theme = document.body.dataset.theme;
-        console.log('theme', theme);
         updateJson({ ...json, theme });
       }
     });

@@ -7,20 +7,36 @@ const TooltipMarkerStyle = `width: 8px; height: 8px; border-radius: 50%; display
 export const reportJSON = {
   theme: 'light',
   layouts: {
-    root: [
-      { i: 'a', x: 0, y: 0, w: 24, h: 6 },
-      { i: 'b', x: 0, y: 6, w: 17, h: 8 },
-      { i: 'c', x: 17, y: 6, w: 7, h: 25 },
-      { i: 'd', x: 0, y: 14, w: 11, h: 17 },
-      { i: 'e', x: 11, y: 14, w: 6, h: 8 },
-      { i: 'f', x: 11, y: 22, w: 6, h: 9 },
-      { i: 'g', x: 0, y: 31, w: 10, h: 14 },
-      { i: 'h', x: 10, y: 31, w: 14, h: 14 },
-      { i: 'i', x: 0, y: 45, w: 12, h: 15 },
-      { i: 'j', x: 12, y: 45, w: 12, h: 15 },
-      { i: 'k', x: 0, y: 60, w: 12, h: 14 },
-      { i: 'l', x: 12, y: 60, w: 12, h: 14 },
-    ],
+    root: {
+      lg: [
+        { i: 'a', x: 0, y: 0, w: 24, h: 6 },
+        { i: 'b', x: 0, y: 6, w: 17, h: 8 },
+        { i: 'c', x: 17, y: 6, w: 7, h: 25 },
+        { i: 'd', x: 0, y: 14, w: 11, h: 17 },
+        { i: 'e', x: 11, y: 14, w: 6, h: 8 },
+        { i: 'f', x: 11, y: 22, w: 6, h: 9 },
+        { i: 'g', x: 0, y: 31, w: 10, h: 14 },
+        { i: 'h', x: 10, y: 31, w: 14, h: 14 },
+        { i: 'i', x: 0, y: 45, w: 12, h: 15 },
+        { i: 'j', x: 12, y: 45, w: 12, h: 15 },
+        { i: 'k', x: 0, y: 60, w: 12, h: 14 },
+        { i: 'l', x: 12, y: 60, w: 12, h: 14 },
+      ],
+      xs: [
+        { i: 'a', x: 0, y: 0, w: 12, h: 6 },
+        { i: 'b', x: 0, y: 6, w: 12, h: 8 },
+        { i: 'c', x: 7, y: 22, w: 5, h: 13 },
+        { i: 'd', x: 0, y: 22, w: 7, h: 13 },
+        { i: 'e', x: 0, y: 14, w: 6, h: 8 },
+        { i: 'f', x: 6, y: 14, w: 6, h: 8 },
+        { i: 'g', x: 6, y: 35, w: 6, h: 14 },
+        { i: 'h', x: 0, y: 73, w: 6, h: 14 },
+        { i: 'i', x: 0, y: 49, w: 12, h: 13 },
+        { i: 'j', x: 0, y: 62, w: 12, h: 11 },
+        { i: 'k', x: 6, y: 73, w: 6, h: 14 },
+        { i: 'l', x: 0, y: 35, w: 6, h: 14 },
+      ],
+    },
   },
   content: {
     tag: 'panel',
@@ -327,7 +343,7 @@ export const reportJSON = {
                     ? 'translate(-50%, 0px) scale(0.8)'
                     : 'translate(-50%, 8px)';
                 const sum = view.getData().reduce((a, b) => a + b.value, 0);
-                return `<div>
+                return `<div class="ring-annotation">
                   <span class="black-color" style="font-size:32px;line-height:32px;opacity:0.65;color:#000;">${sum}</span>
                   <span class="black-color" style="font-size:18px;opacity:0.45;color:#000;vertical-align: bottom;">人</span>
                 </div>`;
@@ -524,7 +540,7 @@ export const reportJSON = {
                     ? 'translate(-50%, 0px) scale(0.8)'
                     : 'translate(-50%, 8px)';
                 const sum = view.getData().reduce((a, b) => a + b.value, 0);
-                return `<div style="font-weight: normal;font-size:18px;">
+                return `<div style="font-weight: normal;font-size:18px;" class="ring-annotation">
                   <span class="black-color" style="font-size:32px;line-height:32px;opacity:0.65;color:#000;">${sum}</span>
                   <span class="black-color" style="font-size:18px;opacity:0.45;color:#000;">人</span>
                 </div>`;

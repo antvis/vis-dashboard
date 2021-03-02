@@ -1,6 +1,18 @@
 .ant-statistic {
-  &:not(:nth-last-of-type) {
-    border-right: 1px solid rgba(0, 0, 0, 0.06);
+  &:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  .ant-statistic-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 414px) {
+    .ant-statistic-content {
+      font-size: 1.4rem;
+    }
   }
 }
 
@@ -14,3 +26,4 @@ body[data-theme='dark'] {
     color: rgba(255, 255, 255, 0.65);
   }
 }
+

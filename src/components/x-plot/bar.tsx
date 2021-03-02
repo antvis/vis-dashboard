@@ -29,11 +29,12 @@ const generateOrders = (
       html: (container) => {
         // 置于底层, 避免遮挡 elements
         container.style['width'] = 0;
+        container.className += ' custom-rank-annotation';
         return `<div style="transform:translate(-100%, -50%);padding-right:16px;width:120px;display:flex;">
           <span class="${idx < 3 ? '' : 'black-background-15'} black-color" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:18px;border-radius:50%;background:${
             idx < 3 ? color : 'rgba(0,0,0,0.15)'
           };color:#fff;font-size:12px;margin-right:8px;">${idx + 1}</span>
-        <span style="display:inline-block;opacity:0.85;font-size:12px;width:calc(100% - 24px);white-space:nowrap;text-overflow:ellipsis;">${
+        <span style="display:inline-block;opacity:0.85;font-size:12px;width:calc(100% - 24px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">${
           d[yField]
         }</span>
         </div>`;

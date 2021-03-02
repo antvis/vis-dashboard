@@ -24,5 +24,27 @@
       flex: 1;
     }
   }
+}
 
+// 屏幕适配下
+@media (max-width: 414px) {
+
+  .g2-html-annotation,
+  .g2-html-annotation :not(.ring-annotation) * {
+    font-size: 1rem !important;
+  }
+
+  .g2-html-annotation.custom-rank-annotation,
+  .g2-html-annotation.custom-rank-annotation *,
+  .g2-html-annotation .custom-tooltip,
+  .g2-html-annotation .custom-tooltip * {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .g2-html-annotation,
+  .g2-html-annotation :not(.ring-annotation) * {
+    font-size: 0.8rem !important;
+  }
 }

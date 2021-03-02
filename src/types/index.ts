@@ -1,3 +1,5 @@
+import { Layouts } from 'react-grid-layout';
+
 export type LooseObject = Record<string, any>;
 
 export type Attributes = LooseObject & {
@@ -19,7 +21,7 @@ export type ReportNode<A = Attributes> = {
 export type Report = {
   // 主题
   theme?: string;
-  layouts: Record<string, any[]>;
+  layouts: Record<string, Layouts>;
   content: ReportNode;
 };
 
