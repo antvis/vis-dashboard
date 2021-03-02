@@ -1,8 +1,8 @@
 import { G2 } from '@antv/g2plot';
 import numeral from 'numeral';
 
-const TooltipContainerStyle = `z-index:20;display: flex;box-shadow:rgb(174, 174, 174) 0px 0px 10px; border-radius: 3px;font-size: 12px; line-height: 12px; padding: 0px 12px;pointer-events: none; padding:4px 10px;`
-const TooltipMarkerStyle = `width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px;`
+const TooltipContainerStyle = `z-index:20;display: flex;box-shadow:rgb(174, 174, 174) 0px 0px 10px; border-radius: 3px;font-size: 12px; line-height: 12px; padding: 0px 12px;pointer-events: none; padding:4px 10px;`;
+const TooltipMarkerStyle = `width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px;`;
 
 export const reportJSON = {
   theme: 'light',
@@ -164,8 +164,9 @@ export const reportJSON = {
           title: '年度销售目标',
           percent: 0.87,
           type: 'meter',
-          radius: 0.95,
+          radius: 1,
           innerRadius: 0.75,
+          appendPadding: [0, 0, 8, 0],
           startAngle: -Math.PI,
           endAngle: 0,
           range: {
@@ -205,6 +206,7 @@ export const reportJSON = {
           type: 'meter',
           radius: 1,
           innerRadius: 0.82,
+          appendPadding: [0, 0, 8, 0],
           range: {
             ticks: [0, 0.25, 0.5, 0.75, 1],
             color: [
@@ -282,20 +284,26 @@ export const reportJSON = {
               position: ['50%', '0%'],
               html: (container, view: G2.View) => {
                 const width = 140;
-                container.style.transform = `translate(${-width-20}px, -10px)`;
-                const models = view.geometries[0].elements.map(ele => ele.getModel())
-                
+                container.style.transform = `translate(${
+                  -width - 20
+                }px, -10px)`;
+                const models = view.geometries[0].elements.map(ele =>
+                  ele.getModel()
+                );
+
                 let content = '';
                 // 降序
-                models.sort((a, b) => b.data['value'] - a.data['value']).forEach((model, index) => {
-                  content += `<div data-index=${index} style="display:flex; padding:0px;margin:8px 0px;justify-content:space-between;font-size:12px;">
+                models
+                  .sort((a, b) => b.data['value'] - a.data['value'])
+                  .forEach((model, index) => {
+                    content += `<div data-index=${index} style="display:flex; padding:0px;margin:8px 0px;justify-content:space-between;font-size:12px;">
                     <span>
                       <span style="${TooltipMarkerStyle};background-color:${model.color};" class="g2-tooltip-marker"></span>
                       <span class="g2-tooltip-name" style="opacity:0.65;">${model.data['type']}</span>
                     </span>
                     <span class="g2-tooltip-value" style="opacity:0.65;">${model.data['value']}</span>
                   </div>`;
-                });
+                  });
                 return `<div class="black-color custom-tooltip" style="${TooltipContainerStyle};width:${width}px;background-color:#fff;color:#000;opacity: 0.95;"><div style="width:100%;">${content}</div></div>`;
               },
             },
@@ -327,7 +335,7 @@ export const reportJSON = {
             },
           ],
           // 关闭元素激活交互
-          interactions: [{ type: 'element-active', enable: false }]
+          interactions: [{ type: 'element-active', enable: false }],
         },
       },
       {
@@ -496,8 +504,8 @@ export const reportJSON = {
                 shadowColor: 'rgba(0,0,0,0.25)',
                 shadowBlur: 20,
                 lineWidth: 0,
-              }
-            }
+              },
+            },
           },
           statistic: {
             title: {
