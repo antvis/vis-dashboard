@@ -3,6 +3,8 @@
   Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
   'Segoe UI Symbol', sans-serif;
 
+@theme-dark-img: url('../static/images/theme-dark.svg');
+@theme-light-img: url('../static/images//theme-light.svg');
 // 复写定制 gatsby 样式
 
 body {
@@ -31,6 +33,9 @@ body {
 
     .site-title {
       max-width: calc(@main-max-width - @main-padding * 2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
@@ -53,6 +58,23 @@ body {
     .site-title {
       width: 100%;
       margin: 0 auto;
+
+      // 主题切换开关
+      .theme-switcher {
+        transition: all ease 0.3s;
+
+        // 未选中时的样式
+        .ant-switch-handle::before{
+          background: @theme-light-img center center;
+        }
+        // 选中时的样式
+        &.ant-switch-checked {
+          background-color: rgba(0, 0, 0, 0.25);
+          .ant-switch-handle::before {
+            background: @theme-dark-img center center;
+          }
+        }
+      }
     }
 
     h1 {
