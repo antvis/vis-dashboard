@@ -12,14 +12,14 @@ export const XRadialBar: React.FC<XRadialBarProps> = props => {
   const { attributes } = props;
 
   let chart: RadialBar;
-  const [config, updateConfig] = useState({
+  const [options, updateOptions] = useState<RadialBarOptions>({
     animation: false as const,
     data: [],
   });
 
   useEffect(() => {
     getData(attributes.data).then(data => {
-      updateConfig(_.assign({}, config, attributes, { data }));
+      updateOptions(_.assign({}, options, attributes, { data }));
     });
   }, [attributes]);
 
@@ -34,11 +34,11 @@ export const XRadialBar: React.FC<XRadialBarProps> = props => {
   return (
     <div data-type="radial-bar" className="full x-plot">
       <Header {...props} />
-      {!_.isEmpty(config.data) && (
+      {!_.isEmpty(options.data) && (
         <UseG2Plot<RadialBarOptions>
           Ctor={RadialBar}
           className="plot-container"
-          options={config}
+          options={options}
           // @ts-ignore
           onReady={chartInstance => (chart = chartInstance)}
         />

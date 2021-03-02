@@ -19,7 +19,7 @@ type XBarProps = XComponentProps<
 const generateOrders = (
   data: object[],
   yField: string,
-  colors: string | string[]
+  colors: string | string[] = '#304658'
 ) => {
   const color = _.isArray(colors) ? colors[0] : colors;
   return _.map(data, (d, idx) => {
@@ -63,7 +63,7 @@ export const XBar: React.FC<XBarProps> = props => {
           color,
           appendPadding: rankType ? [0, 0, 0, 120] : 0,
           annotations: rankType
-            ? generateOrders(data, attributes.yField, color as any)
+            ? generateOrders(data, attributes.yField)
             : [],
         })
       );

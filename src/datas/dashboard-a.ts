@@ -1,3 +1,9 @@
+import { G2 } from '@antv/g2plot';
+import numeral from 'numeral';
+
+const TooltipContainerStyle = `z-index:20;display: flex;background-color: rgb(255, 255, 255); box-shadow: rgb(174, 174, 174) 0px 0px 10px; border-radius: 3px; color: rgb(89, 89, 89); font-size: 12px; line-height: 12px; padding: 0px 12px; opacity: 0.95; pointer-events: none; padding:4px 10px;`
+const TooltipMarkerStyle = `width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px;`
+
 export const reportJSON = {
   layouts: {
     root: [
@@ -69,7 +75,7 @@ export const reportJSON = {
           meta: {
             code1: {
               icon:
-                "<svg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' version='1.1'><path d='M944.835302 353.586994l-10.800419-2.486857 2.493038-10.773634c16.074946-69.444507-42.954431-133.255984-112.324764-123.724748-56.315879 7.73872-98.122688 38.501988-135.84998 80.263468H335.648018V762.684266H512.000598c16.064644 69.811252 78.722318 142.008402 120.60948 180.96573 100.970109 93.915429 204.639292 25.921416 201.645586-59.540346l-0.387348-11.047662 11.076507-0.385288c109.901779-3.828153 167.64961-171.560177-49.226173-262.896032 58.096032-5.060249 116.241513-22.618656 154.584853-46.518857 23.337722-14.542036 42.389891-33.33666 56.783581-54.743823 38.96763-57.955928 7.446149-138.882833-62.251782-154.930994z' fill='#FFB5C0' p-id='5532'></path><path d='M685.213185 91.035042C654.371624 28.395911 560.783793 15.164266 512.000598 67.338817c-48.783195-52.174551-142.371026-38.942905-173.212588 23.696225-28.177513 57.23068-22.142712 144.404604-3.139992 205.832242-37.727292-41.761481-79.536161-72.524748-135.84998-80.263469-69.370334-9.531235-128.39971 54.278181-112.324764 123.724748l2.493038 10.773634-10.800419 2.486857c-69.697932 16.048161-101.219412 96.975066-62.253843 154.933055 14.39369 21.407163 33.445859 40.201787 56.783582 54.743823 38.34334 23.898141 96.490881 41.456547 154.584853 46.518857-216.873722 91.331734-159.125891 259.063759-49.226173 262.891911l11.076507 0.385288-0.387348 11.047662c-2.991646 85.461763 100.675477 153.455775 201.645585 59.540346 41.887163-38.957328 104.544837-111.154479 120.609481-180.96573a430.852636 430.852636 0 0 1-10.363622-58.300008l137.43852-367.968322a440.163412 440.163412 0 0 1 49.277682-39.548652c19.004781-61.427638 25.039581-148.601561-3.137932-205.832242z' fill='#FF8E9E' p-id='5533'></path><path d='M327.043946 468.639678l-137.04087-78.227831a15.452716 15.452716 0 0 0-15.320853 26.838278l137.040869 78.227831z' fill='#EA5B70' p-id='5534'></path><path d='M855.077684 396.170559a15.450656 15.450656 0 0 0-21.079565-5.758712l-137.04087 78.227831 15.320854 26.840338 137.040869-78.227831a15.452716 15.452716 0 0 0 5.758712-21.081626z' fill='#FF8E9E' p-id='5535'></path><path d='M274.210078 779.212491a15.452716 15.452716 0 0 0 22.2993 21.396861l117.115107-122.062036-22.30136-21.396861z' fill='#EA5B70' p-id='5536'></path><path d='M632.667769 657.142213l-22.301361 21.396861 117.123348 122.068218a15.452716 15.452716 0 0 0 22.2993-21.396861z' fill='#FF8E9E' p-id='5537'></path><path d='M512.000598 160.364169a15.452716 15.452716 0 0 0-15.452717 15.452716V308.024145h30.905433V175.816885a15.452716 15.452716 0 0 0-15.452716-15.452716z' fill='#EA5B70' p-id='5538'></path><path d='M639.075495 336.417996H501.636976v367.968322c3.434624 0.17101 6.887791 0.259606 10.363622 0.259606 113.789682 0 206.036217-92.244475 206.036217-206.036218 0-65.845054-30.886889-124.47472-78.96132-162.19171z' fill='#FFDBE0' p-id='5539'></path><path d='M512.000598 292.571429c-113.789682 0-206.036217 92.244475-206.036218 206.036217 0 110.313851 86.69592 200.378463 195.672596 205.776612 0-137.415855 34.478101-272.423147 137.438519-367.968322C604.067881 308.951308 559.947286 292.571429 512.000598 292.571429z' fill='#FFB5C0' p-id='5540'></path><path d='M382.069006 572.924881a41.207243 32.815388 0.11 1 0 0.126002-65.630656 41.207243 32.815388 0.11 1 0-0.126002 65.630656Z' fill='#FF8E9E' p-id='5541'></path><path d='M641.875527 507.951388c-22.758761-0.049449-41.238149 14.601787-41.279356 32.724733-0.039147 18.122946 18.37637 32.856596 41.135131 32.906044s41.240209-14.601787 41.279356-32.724732-18.37637-32.854535-41.135131-32.906045z' fill='#FF8E9E' p-id='5542'></path><path d='M399.638746 476.879066a15.452716 15.452716 0 0 0-15.452716 15.452717v24.724346a15.452716 15.452716 0 0 0 30.905433 0v-24.724346a15.452716 15.452716 0 0 0-15.452717-15.452717zM624.006006 476.879066a15.452716 15.452716 0 0 0-15.452716 15.452717v24.724346a15.452716 15.452716 0 0 0 30.905432 0v-24.724346a15.452716 15.452716 0 0 0-15.452716-15.452717zM565.767809 517.843187a15.452716 15.452716 0 0 0-15.452717 15.452716c0 6.249078-5.082913 11.331992-11.331991 11.331992s-11.331992-5.082913-11.331992-11.331992a15.452716 15.452716 0 0 0-30.905433 0c0 6.249078-5.082913 11.331992-11.331992 11.331992s-11.331992-5.082913-11.331992-11.331992a15.452716 15.452716 0 0 0-30.905433 0c0 35.565972 41.547203 55.221827 69.022133 32.629956 27.470809 22.589811 69.022133 2.940137 69.022133-32.629956a15.452716 15.452716 0 0 0-15.452716-15.452716z' fill='#313D40'></path></svg>",
+                '<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M689.00486 572.124909c79.006322-55.180406 130.7762-146.675053 130.7762-250.346961 0-168.551225-136.490232-305.173608-305.173608-305.173608-168.551225 0-305.087201 136.621367-305.087201 305.173608 0 103.580419 51.547254 194.921567 130.468185 250.079609C162.135773 641.653928 36.012326 814.3232 36.012326 1016.886178c0 0.086407 0 0.086407 0 0.086407l85.691159 0c0-0.217542 0-0.484895 0-0.707519 0-200.834842 151.237333-365.976556 346.051145-388.827599 1.990406-0.131135 54.644684-4.739159 97.912132 0.729883 1.065345 0.244989 2.217097 0.331396 3.324121 0.553004l0.484895 0c189.942501 27.190699 335.996442 190.119381 335.996442 387.544712 0 0.222625 0 0.489977 0 0.707519l87.023857 0c0 0 0 0 0-0.086407C992.496077 814.544808 866.635916 641.961943 689.00486 572.124909L689.00486 572.124909zM514.785349 550.557769c-126.259665 0-228.693415-102.34226-228.693415-228.64767S388.525684 93.262429 514.785349 93.262429c126.21392 0 228.64767 102.34226 228.64767 228.64767S640.999269 550.557769 514.785349 550.557769L514.785349 550.557769zM514.785349 550.557769" p-id="2751"></path></svg>',
             },
             code2: {
               icon:
@@ -106,7 +112,7 @@ export const reportJSON = {
           xField: 'value',
           yField: 'type',
           barStyle: { lineCap: 'round' },
-          barBackground: { style: { fill: 'rgba(0,0,0,0.06)', radius: 10 } },
+          barBackground: { style: { fill: 'rgba(0,0,0,0.05)', radius: 10 } },
           minBarWidth: 10,
           maxBarWidth: 10,
           xAxis: false,
@@ -140,6 +146,11 @@ export const reportJSON = {
           },
           xAxis: { title: { text: '职业' } },
           yAxis: { title: { text: '顾客人数' } },
+          meta: {
+            value: {
+              formatter: v => numeral(v).format('0,0'),
+            },
+          },
           minColumnWidth: 6,
           maxColumnWidth: 12,
           dodgePadding: 1,
@@ -161,7 +172,7 @@ export const reportJSON = {
           },
           meter: {
             steps: 30,
-            stepRatio: 0.75,
+            stepRatio: 0.88,
           },
           indicator: false,
           statistic: {
@@ -191,8 +202,8 @@ export const reportJSON = {
           title: '店铺卫生状况',
           percent: 0.87,
           type: 'meter',
-          radius: 0.95,
-          innerRadius: 0.75,
+          radius: 1,
+          innerRadius: 0.82,
           range: {
             ticks: [0, 0.25, 0.5, 0.75, 1],
             color: [
@@ -204,16 +215,17 @@ export const reportJSON = {
           },
           meter: {
             steps: 4,
-            stepRatio: 0.95,
+            stepRatio: 0.97,
           },
           indicator: false,
           axis: false,
           statistic: false,
           annotations: [
             {
+              // fixme 完善 位置逻辑
               type: 'html',
-              top: false,
-              position: ['50%', '62.5%'],
+              // 圆弧角度是 3 / 4 * Math.PI * 2
+              position: ['50%', `${(Math.sqrt(2) / 8 + 0.5) * 100}%`],
               html: (container, view) => {
                 const coordiante = view.views[0].getCoordinate();
                 const radius =
@@ -221,21 +233,18 @@ export const reportJSON = {
                   coordiante.radius *
                   coordiante.innerRadius;
                 const size = radius * 1.5;
-                // const startAngle = (-7 / 6) * Math.PI;
-                // const endAngle = (1 / 6) * Math.PI;
-                // const angle =
-                //   (endAngle - startAngle) * 0.87 -
-                //   startAngle +
-                //   (Math.PI * 2) / 3;
                 const markerSize = 10;
                 const offsetX = radius - markerSize / 2;
-                const offsetY = markerSize * 0.625;
+                // positionY: (Math.sqrt(2) / 8 + 0.5)
+                const offsetY = markerSize * (Math.sqrt(2) / 8 + 0.5);
                 return `<div style="position:relative;height:${size}px;width:${size}px;transform:translate(-50%,-50%);display:flex;align-items: center;justify-content: center;flex-direction: column;">
                 <div style="z-index:-2;position:absolute;left:${
                   radius / 2
                 }px;top:${
                   radius / 2
-                }px;height:${markerSize}px;width:${markerSize}px;opacity:0.25;transform:translate(${offsetX}px,${offsetY}px) rotate(45deg);background: #000000;"></div>
+                }px;height:${markerSize}px;width:${markerSize}px;opacity:0.25;transform:translate(${offsetX}px,${offsetY}px) rotate(${
+                  (0.58 - Math.sqrt(2) / 8) * 100
+                }deg);background: #000000;"></div>
                 <div style="z-index:-1;position:absolute;top:0;left:0;right:0;bottom:0;border-radius:${size}px;background:#FFFFFF;box-shadow: 0 3px 6px -4px rgba(0,0,0,0.12), 0 6px 16px 0 rgba(0,0,0,0.08), 0 9px 28px 8px rgba(0,0,0,0.05);"></div>
                    <div style="color:#30BF78;opacity: 1;font-weight: 700;font-size: 18px;">优秀</div>
                    <div style="color:rgba(0,0,0,0.45);font-size: 12px">卫生评级</div>
@@ -251,29 +260,44 @@ export const reportJSON = {
         attributes: {
           title: '店铺服务满意度',
           data: [
-            { type: '很满意', value: 800 },
+            { type: '不好', value: 100 },
             { type: '还可以', value: 400 },
             { type: '不太好', value: 600 },
-            { type: '不好', value: 100 },
+            { type: '很满意', value: 800 },
           ],
           xField: 'type',
           yField: 'value',
           colorField: 'type',
-          radius: 0.85,
-          innerRadius: 0.6,
-          barBackground: {},
+          radius: 0.96,
+          innerRadius: 0.55,
+          barBackground: { fill: 'rgba(0,0,0,0.05)' },
           barStyle: { lineCap: 'round' },
           xAxis: false,
-          tooltip: {
-            showCrosshairs: false,
-            showTitle: false,
-            itemTpl: `<li class="g2-tooltip-list-item" data-index={index} style="margin-bottom:4px;display:flex;">
-                <span style="background-color:{color};" class="g2-tooltip-marker"></span>
-                <span class="g2-tooltip-name">{title}:</span>
-                <span class="g2-tooltip-value">{value}</span>
-            </li>`,
-          },
+          // 关闭 tooltip，默认使用 annotations 展示所有信息
+          tooltip: false,
           annotations: [
+            {
+              type: 'html',
+              position: ['50%', '0%'],
+              html: (container, view: G2.View) => {
+                const width = 140;
+                container.style.transform = `translate(${-width-20}px, -10px)`;
+                const models = view.geometries[0].elements.map(ele => ele.getModel())
+                
+                let content = '';
+                // 降序
+                models.sort((a, b) => b.data['value'] - a.data['value']).forEach((model, index) => {
+                  content += `<div data-index=${index} style="display:flex; padding:0px;margin:8px 0px;justify-content:space-between;font-size:12px;">
+                    <span>
+                      <span style="${TooltipMarkerStyle};background-color:${model.color};" class="g2-tooltip-marker"></span>
+                      <span class="g2-tooltip-name">${model.data['type']}</span>
+                    </span>
+                    <span class="g2-tooltip-value">${model.data['value']}</span>
+                  </div>`;
+                });
+                return `<div style="${TooltipContainerStyle};width:${width}px;"><div style="width:100%;">${content}</div></div>`;
+              },
+            },
             {
               type: 'html',
               position: ['50%', '50%'],
@@ -301,6 +325,8 @@ export const reportJSON = {
               },
             },
           ],
+          // 关闭元素激活交互
+          interactions: [{ type: 'element-active', enable: false }]
         },
       },
       {
@@ -332,20 +358,22 @@ export const reportJSON = {
         attributes: {
           title: '店内环境风格喜好',
           data: [
-            { x: 1, y: 2, value: 10, type: '韩式清新' },
+            { x: 1, y: 2, value: 10, type: '韩式清新', percentage: 0.048 },
             {
               x: 5,
               y: 1.5,
               value: 90,
               type: '北欧风格',
+              percentage: 0.429,
             },
-            { x: 3, y: 1, value: 60, type: '日式极简' },
-            { x: 8, y: 2, value: 30, type: '新中式' },
+            { x: 3, y: 1, value: 60, type: '日式极简', percentage: 0.286 },
+            { x: 8, y: 2, value: 30, type: '新中式', percentage: 0.143 },
             {
               x: 9,
               y: 0.5,
               value: 20,
               type: '美式复古',
+              percentage: 0.095,
             },
           ],
           xField: 'x',
@@ -357,13 +385,25 @@ export const reportJSON = {
           meta: {
             x: { max: 10, min: 0 },
             y: { max: 3, min: 0 },
-            value: { max: 90, min: 0, alias: '人数占比' },
+            value: { max: 90, min: 0 },
+            percentage: {
+              alias: '人数占比',
+              formatter: v => `${(v * 100).toFixed(0)}%`,
+            },
           },
           yAxis: false,
           xAxis: false,
+          state: {
+            active: {
+              style: {
+                shadowColor: 'rgba(0,0,0,0.25)',
+                shadowBlur: 20,
+                lineWidth: 0,
+              },
+            },
+          },
+          interactions: [{ type: 'element-active' }],
           pointStyle: {
-            shadowColor: 'rgba(0,0,0,0.25)',
-            shadowBlur: 20,
             lineWidth: 0,
           },
           legend: { position: 'top-left' },
@@ -371,7 +411,7 @@ export const reportJSON = {
             showCrosshairs: false,
             containerTpl:
               '<div class="g2-tooltip"><div class="g2-tooltip-list"></div></div>',
-            fields: ['value'],
+            fields: ['percentage'],
           },
           label: {
             layout: [{ type: 'limit-in-shape' }],
@@ -382,6 +422,7 @@ export const reportJSON = {
               fill: '#fff',
               fontWeight: 500,
             },
+            formatter: datum => `${(datum.percentage * 100).toFixed(0)}%`,
           },
         },
       },
@@ -397,6 +438,7 @@ export const reportJSON = {
           xAxis: {
             range: [0.02, 0.98],
           },
+          smooth: true,
         },
       },
       {
@@ -445,7 +487,17 @@ export const reportJSON = {
           innerRadius: 0.75,
           legend: { ' position': 'right-center' },
           label: false,
-          pieStyle: { lineCap: 'round' },
+          pieStyle: { lineCap: 'round', lineWidth: 0 },
+          interactions: [{ type: 'element-active' }],
+          state: {
+            active: {
+              style: {
+                shadowColor: 'rgba(0,0,0,0.25)',
+                shadowBlur: 20,
+                lineWidth: 0,
+              }
+            }
+          },
           statistic: {
             title: {
               customHtml: (container, view) => {
@@ -455,7 +507,7 @@ export const reportJSON = {
               },
             },
             content: {
-              customHtml: (container, view) => {
+              customHtml: (container, view, datum, data) => {
                 const width = view.getCoordinate().getRadius();
                 // 🧙‍♀️ 魔法调整
                 container.style.transform =
