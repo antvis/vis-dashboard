@@ -181,7 +181,7 @@ export const reportJSON = {
           percent: 0.87,
           type: 'meter',
           radius: 1,
-          innerRadius: 0.75,
+          innerRadius: 0.80,
           appendPadding: [0, 0, 8, 0],
           startAngle: -Math.PI,
           endAngle: 0,
@@ -204,6 +204,7 @@ export const reportJSON = {
               },
             },
             content: {
+              formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
               style: {
                 color: '#000',
                 opacity: 0.85,
