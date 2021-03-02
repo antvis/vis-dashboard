@@ -4,6 +4,44 @@ import numeral from 'numeral';
 const TooltipContainerStyle = `z-index:20;display: flex;box-shadow:rgb(174, 174, 174) 0px 0px 10px; border-radius: 3px;font-size: 12px; line-height: 12px; padding: 0px 12px;pointer-events: none; padding:4px 10px;`;
 const TooltipMarkerStyle = `width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px;`;
 
+const GAUGE_1 = {
+  percent: 0.87,
+  appendPadding: [0, 0, 8, 0],
+  startAngle: -Math.PI,
+  endAngle: 0,
+  range: {
+    color: 'l(0) 0:#0099FF 0.25:#09ADDF 0.75:#15C8B7 1:#1EDB9A',
+  },
+  indicator: false,
+  statistic: {
+    title: {
+      formatter: () => '目标完成度',
+      offsetY: 12,
+      style: {
+        color: '#000',
+        opacity: 0.65,
+        fontSize: '12px',
+      },
+    },
+    content: {
+      formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
+      style: {
+        color: '#000',
+        opacity: 0.85,
+        fontSize: '24px',
+      },
+    },
+  },
+};
+
+const GAUGE_2 = {
+  percent: 0.87,
+  radius: 1,
+  innerRadius: 0.82,
+  appendPadding: [0, 0, 8, 0],
+  indicator: false,
+};
+
 export const reportJSON = {
   theme: 'light',
   layouts: {
@@ -178,40 +216,23 @@ export const reportJSON = {
         id: 'e',
         attributes: {
           title: '年度销售目标',
-          percent: 0.87,
-          type: 'meter',
-          radius: 1,
-          innerRadius: 0.80,
-          appendPadding: [0, 0, 8, 0],
-          startAngle: -Math.PI,
-          endAngle: 0,
-          range: {
-            color: 'l(0) 0:#0099FF 0.25:#09ADDF 0.75:#15C8B7 1:#1EDB9A',
-          },
-          meter: {
-            steps: 30,
-            stepRatio: 0.88,
-          },
-          indicator: false,
-          statistic: {
-            title: {
-              formatter: () => '目标完成度',
-              offsetY: 12,
-              style: {
-                color: '#000',
-                opacity: 0.65,
-                fontSize: '12px',
+          options: [
+            {
+              ...GAUGE_1,
+              radius: 1,
+              innerRadius: 0.8,
+              type: 'meter',
+              meter: {
+                steps: 30,
+                stepRatio: 0.88,
               },
             },
-            content: {
-              formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
-              style: {
-                color: '#000',
-                opacity: 0.85,
-                fontSize: '24px',
-              },
+            {
+              ...GAUGE_1,
+              innerRadius: 0.85,
+              type: '',
             },
-          },
+          ],
         },
       },
       {
@@ -219,58 +240,77 @@ export const reportJSON = {
         id: 'f',
         attributes: {
           title: '店铺卫生状况',
-          percent: 0.87,
-          type: 'meter',
-          radius: 1,
-          innerRadius: 0.82,
-          appendPadding: [0, 0, 8, 0],
-          range: {
-            ticks: [0, 0.25, 0.5, 0.75, 1],
-            color: [
-              'r(0,0,1) 0:#FAAD14 1:#F4664A',
-              'r(0.1,1,1) 0:#FAAD14 1:#CBFF49',
-              'r(0,0,1) 0:#CEEE27 1:#30BF78',
-              'r(0,0,1) 0:#A0D911 1:#30BF78',
-            ],
-          },
-          meter: {
-            steps: 4,
-            stepRatio: 0.97,
-          },
-          indicator: false,
-          axis: false,
-          statistic: false,
-          annotations: [
+          options: [
             {
-              // fixme 完善 位置逻辑
-              type: 'html',
-              // 圆弧角度是 3 / 4 * Math.PI * 2
-              position: ['50%', `${(Math.sqrt(2) / 8 + 0.5) * 100}%`],
-              html: (container, view) => {
-                const coordiante = view.views[0].getCoordinate();
-                const radius =
-                  coordiante.getRadius() *
-                  coordiante.radius *
-                  coordiante.innerRadius;
-                const size = radius * 1.5;
-                const markerSize = 10;
-                const offsetX = radius - markerSize / 2;
-                // positionY: (Math.sqrt(2) / 8 + 0.5)
-                const offsetY = markerSize * (Math.sqrt(2) / 8 + 0.5);
-                return `<div style="position:relative;height:${size}px;width:${size}px;transform:translate(-50%,-50%);display:flex;align-items: center;justify-content: center;flex-direction: column;">
+              ...GAUGE_2,
+              type: 'meter',
+              meter: {
+                steps: 4,
+                stepRatio: 0.97,
+              },
+              axis: false,
+              statistic: false,
+              range: {
+                ticks: [0, 0.25, 0.5, 0.75, 1],
+                color: [
+                  'r(0,0,1) 0:#FAAD14 1:#F4664A',
+                  'r(0.1,1,1) 0:#FAAD14 1:#CBFF49',
+                  'r(0,0,1) 0:#CEEE27 1:#30BF78',
+                  'r(0,0,1) 0:#A0D911 1:#30BF78',
+                ],
+              },
+              annotations: [
+                {
+                  // fixme 完善 位置逻辑
+                  type: 'html',
+                  // 圆弧角度是 3 / 4 * Math.PI * 2
+                  position: ['50%', `${(Math.sqrt(2) / 8 + 0.5) * 100}%`],
+                  html: (container, view) => {
+                    const coordiante = view.views[0].getCoordinate();
+                    const radius =
+                      coordiante.getRadius() *
+                      coordiante.radius *
+                      coordiante.innerRadius;
+                    const size = radius * 1.5;
+                    const markerSize = 10;
+                    const offsetX = radius - markerSize / 2;
+                    // positionY: (Math.sqrt(2) / 8 + 0.5)
+                    const offsetY = markerSize * (Math.sqrt(2) / 8 + 0.5);
+                    return `<div style="position:relative;height:${size}px;width:${size}px;transform:translate(-50%,-50%);display:flex;align-items: center;justify-content: center;flex-direction: column;">
                 <div class="black-background" style="z-index:-2;position:absolute;left:${
                   radius / 2
                 }px;top:${
-                  radius / 2
-                }px;height:${markerSize}px;width:${markerSize}px;opacity:0.25;transform:translate(${offsetX}px,${offsetY}px) rotate(${
-                  (0.58 - Math.sqrt(2) / 8) * 100
-                }deg);background: #000000;"></div>
+                      radius / 2
+                    }px;height:${markerSize}px;width:${markerSize}px;opacity:0.25;transform:translate(${offsetX}px,${offsetY}px) rotate(${
+                      (0.58 - Math.sqrt(2) / 8) * 100
+                    }deg);background: #000000;"></div>
                 <div class="custom-gauge-anntation" style="z-index:-1;position:absolute;top:0;left:0;right:0;bottom:0;border-radius:${size}px;background:#FFFFFF;box-shadow: 0 3px 6px -4px rgba(0,0,0,0.12), 0 6px 16px 0 rgba(0,0,0,0.08), 0 9px 28px 8px rgba(0,0,0,0.05);"></div>
                    <div style="color:#30BF78;opacity: 1;font-weight: 700;font-size: 18px;">优秀</div>
                    <div class="black-color" style="color:#000;opacity:0.45;font-size: 12px;">卫生评级</div>
                 </div>`;
-              },
+                  },
+                },
+              ],
             },
+            // todo
+            // {
+            //   ...GAUGE_2,
+            //   type: '',
+            //   axis: false,
+            //   statistic: {},
+            //   range: {
+            //     ticks: [0, GAUGE_2.percent, 1],
+            //     color: 'l(0) 0:#F4664A 0.2:#FAAD14 0.4:#CBFF49 0.6:#CEEE27 0.8:#A0D911 1:#30BF78',
+            //   },
+            //   annotations: [{
+            //     type: 'html',
+            //     position: ['50%', `${(Math.sqrt(2) / 8 + 0.5) * 100}%`],
+            //     html: () => {
+            //       return `<div>
+            //       </div>`
+            //     }
+            //   }] 
+            // }
           ],
         },
       },
