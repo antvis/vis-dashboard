@@ -1,18 +1,21 @@
 // 对应 layout.less
 body[data-theme='dark'] {
+  // 只在暗黑模式下引入
+  @import '~antd/dist/antd.dark.less'; // 引入官方提供的暗色 less 样式入口文件
+  @import '~antd/dist/antd.compact.less'; // 引入官方提供的紧凑 less 样式入口文件
   @background: rgba(0, 0, 0, 1);
-
+  
   background: @background !important;
-
+  
   #gatsby-focus-wrapper {
     background: @background;
   }
-
+  
   header,
   footer {
     background: #141414;
   }
-
+  
   .theme-switcher.ant-switch-checked {
     background: rgba(255, 255, 255, 0.25);
   }
