@@ -220,7 +220,7 @@ export const reportJSON = {
             {
               ...GAUGE_1,
               radius: 1,
-              innerRadius: 0.8,
+              innerRadius: 0.85,
               type: 'meter',
               meter: {
                 steps: 30,
@@ -300,19 +300,22 @@ export const reportJSON = {
               statistic: {},
               range: {
                 ticks: [0, GAUGE_2.percent, 1],
-                color: 'l(0) 0:#F4664A 0.2:#FAAD14 0.4:#CBFF49 0.6:#CEEE27 0.8:#A0D911 1:#30BF78',
+                color:
+                  'l(0) 0:#F4664A 0.2:#FAAD14 0.4:#CBFF49 0.6:#CEEE27 0.8:#A0D911 1:#30BF78',
               },
-              annotations: [{
-                type: 'html',
-                position: ['50%', `${(Math.sqrt(2) / 8 + 0.5) * 100}%`],
-                html: () => {
-                  return `<div style="transform: translate(-50%, -50%)">
+              annotations: [
+                {
+                  type: 'html',
+                  position: ['50%', `${(Math.sqrt(2) / 8 + 0.5) * 100}%`],
+                  html: () => {
+                    return `<div style="transform: translate(-50%, -50%)">
                     <div style="color:#30BF78;opacity: 1;font-weight: 700;font-size: 36px; text-align: center;">优</div>
                     <div class="black-color" style="color:#000;opacity:0.65;font-size: 14px;">系统表现</div>
-                  </div>`
-                }
-              }] 
-            }
+                  </div>`;
+                  },
+                },
+              ],
+            },
           ],
         },
       },
@@ -332,7 +335,7 @@ export const reportJSON = {
           colorField: 'type',
           radius: 0.96,
           innerRadius: 0.55,
-          barBackground: { fill: 'rgba(0,0,0,0.05)' },
+          barBackground: { style: { fill: 'rgb(0,0,0)', fillOpacity: 0.05 } },
           barStyle: { lineCap: 'round' },
           xAxis: false,
           // 关闭 tooltip，默认使用 annotations 展示所有信息

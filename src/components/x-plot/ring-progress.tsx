@@ -1,12 +1,12 @@
 import React from 'react';
 import { RingProgress, RingProgressOptions, G2 } from '@antv/g2plot';
 import * as _ from 'lodash';
-import { XComponentProps } from '@/types';
+import { Attributes, XComponentProps } from '@/types';
 import { Header } from '@/components/x-plot/common/header';
 import { UseG2Plot } from '@/components/x-plot/common/use-g2plot';
 import './ring-progress.less';
 
-type XPlotProps = XComponentProps<{
+type XPlotProps = XComponentProps<Attributes & {
   /** 指标 */
   measures: string[];
   /** 元信息 */
@@ -19,7 +19,7 @@ type XPlotProps = XComponentProps<{
 }>;
 
 export const XRingProgress: React.FC<XPlotProps> = props => {
-  const { measures, style, data, meta, color = ['#009CFF'] } = props.attributes;
+  const { measures, style, data, meta, color = ['#009CFF'], theme } = props.attributes;
 
   return (
     <div data-type="ring-progress" className="full x-plot" style={style || {}}>
@@ -32,7 +32,7 @@ export const XRingProgress: React.FC<XPlotProps> = props => {
 
           const config = {
             percent: dataValue,
-            color: strokeColor,
+            color: [strokeColor, theme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.05)'],
             radius: 0.94,
             progressStyle: { lineCap: 'round' as const },
             statistic: {

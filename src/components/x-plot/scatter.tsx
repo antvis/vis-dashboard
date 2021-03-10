@@ -20,7 +20,16 @@ export const XScatter: React.FC<XScatterProps> = props => {
 
   useEffect(() => {
     getData(attributes.data).then(data => {
-      updateConfig(_.assign({}, config, attributes, { data }));
+      const activeStateStyle = { shadowColor: '#E8EDF3' };
+      if (attributes.theme === 'dark') {
+        activeStateStyle.shadowColor = 'rgba(255,255,255,0.2)';
+      }
+      updateConfig(
+        _.assign({}, config, attributes, {
+          data,
+          state: { active: { style: activeStateStyle } },
+        })
+      );
     });
   }, [attributes]);
 

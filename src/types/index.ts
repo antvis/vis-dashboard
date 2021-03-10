@@ -4,6 +4,8 @@ export type LooseObject = Record<string, any>;
 
 export type Attributes = LooseObject & {
   readonly id?: string;
+  // 主题
+  readonly theme?: string | object;
   /** className of movable handler */
   readonly moveHandlerClassName?: string;
 };

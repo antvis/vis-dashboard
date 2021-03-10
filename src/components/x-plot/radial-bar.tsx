@@ -19,7 +19,15 @@ export const XRadialBar: React.FC<XRadialBarProps> = props => {
 
   useEffect(() => {
     getData(attributes.data).then(data => {
-      updateOptions(_.assign({}, options, attributes, { data }));
+      let barBackground = {
+        style: { fill: 'rgb(0, 0, 0)', fillOpacity: 0.05 },
+      };
+      if (attributes.theme === 'dark') {
+        barBackground = {
+          style: { fill: 'rgba(255, 255, 255,1)', fillOpacity: 0.15 },
+        };
+      }
+      updateOptions(_.assign({}, options, attributes, { data, barBackground }));
     });
   }, [attributes]);
 
