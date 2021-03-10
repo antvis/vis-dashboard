@@ -15,6 +15,9 @@
 
   .header {
     margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .title {
       font-family: @font-family;
@@ -23,6 +26,16 @@
       color: rgba(0, 0, 0, 0.85);
       letter-spacing: -0.2px;
       font-weight: 500;
+    }
+
+    .style-switcher {
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      :last-child {
+        margin-left: 4px;
+      }
     }
   }
 }
@@ -36,3 +49,21 @@
   cursor: move;
 }
 /** 拖拽部位的样式 end */
+
+// 头部样式切换按钮
+.header-style-switcher-menu {
+  padding: 0;
+
+  .menu-item {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .ant-dropdown-menu-item {
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .ant-dropdown-menu-item-selected {
+    color: #009CFF !important;
+  }
+}

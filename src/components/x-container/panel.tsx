@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { WidthProvider, Layout, Responsive, Layouts } from 'react-grid-layout';
 import { XComponentProps } from '@/types';
 import { isEditMode } from '@/utils/location';
+import PageLoading from '../base/page-loading';
 
 const ReactGridLayout = WidthProvider(Responsive);
 type XProps = XComponentProps<{
@@ -23,7 +24,7 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
   };
 
   if (_.isEmpty(layout)) {
-    return <div></div>;
+    return <PageLoading />;
   }
   return (
     <div className="x-panel full">

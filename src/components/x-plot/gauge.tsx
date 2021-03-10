@@ -13,10 +13,11 @@ export const XGauge: React.FC<XGaugeProps> = props => {
   const { attributes } = props;
 
   const [options, updateConfig] = useState({ percent: null });
+  const [selectedOption, changeOption] = useState(0);
 
   useEffect(() => {
-    updateConfig(_.assign({}, options, attributes.options[0]));
-  }, [attributes]);
+    updateConfig(_.assign({}, options, attributes.options[selectedOption]));
+  }, [attributes, selectedOption]);
 
   return (
     <div
@@ -24,7 +25,7 @@ export const XGauge: React.FC<XGaugeProps> = props => {
       style={attributes.style || {}}
       className="full x-plot"
     >
-      <Header {...props} />
+      <Header {...props} changeOption={changeOption} selectedOption={selectedOption} />
       <UseG2Plot Ctor={Gauge} options={options} className="plot-container" />
     </div>
   );
