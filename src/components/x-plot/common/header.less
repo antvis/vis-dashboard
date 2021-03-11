@@ -1,0 +1,18 @@
+.grid-drag-handler {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+
+  &.header-no-title {
+    position: absolute;
+  }
+}
+
+.draggable .grid-drag-handler {
+  &:hover {
+    cursor: move;
+    transition: background-color 0.1s ease-in-out;
+    background-color: #f1f5f9;
+  }
+}
