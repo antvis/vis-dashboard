@@ -41,7 +41,7 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
         // This turns off rearrangement so items will not be pushed arround.
         // preventCollision={true}
         onLayoutChange={onLayoutChange}
-        draggableHandle=".header"
+        draggableHandle=".grid-drag-handler"
         // Margin between items [x, y] in px.
         containerPadding={[0, 0]}
         margin={[16, 16]}

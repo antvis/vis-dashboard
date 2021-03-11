@@ -3,18 +3,16 @@
   Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
   sans-serif;
 
-// 每一个卡片都有一个 .x-component 的类名
+// 每一个卡片都有一个 .x-component 的类名(.header + .plot-container 组成)
 .x-component {
   background-color: #fff;
   border-radius: 2px;
-  padding: 24px;
 
   @media (max-width: 640px) {
     padding: 16px;
   }
 
   .header {
-    margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,6 +37,13 @@
       }
     }
   }
+
+  .header {
+    padding: 16px 24px;
+  }
+  .plot-container {
+    padding: 0 24px 24px;
+  }
 }
 
 /** 拖拽部位的样式 start */
@@ -46,9 +51,6 @@
   cursor: default;
 }
 
-.draggable .header {
-  cursor: move;
-}
 /** 拖拽部位的样式 end */
 
 // 头部样式切换按钮
@@ -65,6 +67,6 @@
   }
 
   .ant-dropdown-menu-item-selected {
-    color: #009CFF !important;
+    color: #009cff !important;
   }
 }

@@ -6,8 +6,6 @@ export type Attributes = LooseObject & {
   readonly id?: string;
   // 主题
   readonly theme?: string | object;
-  /** className of movable handler */
-  readonly moveHandlerClassName?: string;
 };
 
 export type ReportNode<A = Attributes> = {
