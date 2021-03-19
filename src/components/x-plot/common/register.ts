@@ -11,6 +11,7 @@ import { XSankey } from '../sankey';
 import { XScatter } from '../scatter';
 import { XGauge } from '../gauge';
 import { XStatistic } from '../statistic';
+import { XLiquid } from '../liquid';
 
 /**
  * 组件池子
@@ -42,6 +43,7 @@ registerComponent('sankey', XSankey);
 registerComponent('scatter', XScatter);
 registerComponent('gauge', XGauge);
 registerComponent('statistic', XStatistic);
+registerComponent('liguid', XLiquid);
 
 /**
  * 容器，可以创建 react-grid-layout
