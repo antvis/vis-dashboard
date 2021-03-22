@@ -172,7 +172,10 @@ export const monitorJson = {
           yField: 'value',
           seriesField: 'type',
           legend: false,
-          showLegendTable: true,
+          legendTable: {
+            show: true,
+            showColumnList: ['max', 'current']
+          }
         }
       }
     ],
