@@ -1,0 +1,33 @@
+.legend-table {
+  
+  .index-column {
+    display: flex;
+    align-items: center;
+
+    .marker {
+      width: 10px;
+      height: 2px;
+      margin-right: 8px;
+    }
+  }
+
+  .unselected-row {
+    opacity: 0.3;
+  }
+
+  // 重写table 样式
+  .ant-table-content {
+    font-size: 12px;
+    white-space: nowrap;
+    
+    .ant-table-thead {
+      opacity: 0.85;
+      background: #F5F7FA;
+
+      .ant-table-cell {
+        padding: 5px 8px;
+      }
+    }
+
+  }
+}
