@@ -5,16 +5,22 @@ import { Header } from '@/components/x-plot/common/header';
 import { UseG2Plot } from '@/components/x-plot/common/use-g2plot';
 import { XComponentProps } from '@/types';
 import { getData } from '@/utils/get-data';
+import { LegendTable } from './common/legendTable';
 
-type XLineProps = XComponentProps<LineOptions>;
+type XLineProps = XComponentProps<{
+  legendTable?: {
+    show: boolean,
+    showColumnList: Array<'max' | 'min' | 'avg' | 'sum' | 'current'>;
+  },
+} & LineOptions>;
 
 export const XLine: React.FC<XLineProps> = props => {
   const { attributes } = props;
 
-  let chart: Line;
-  const [config, updateConfig] = useState({
+  const [config, updateConfig] = useState<LineOptions>({
     data: [],
   });
+  const [chart, setChart] = useState<Line>(null);
 
   useEffect(() => {
     getData(attributes.data).then(data => {
@@ -33,15 +39,22 @@ export const XLine: React.FC<XLineProps> = props => {
   return (
     <div data-type="line" className="full x-plot">
       <Header {...props} />
-      {!_.isEmpty(config.data) && (
-        <UseG2Plot
-          Ctor={Line}
-          className="plot-container"
-          options={config}
-          // @ts-ignore
-          onReady={chartInstance => (chart = chartInstance)}
-        />
-      )}
+      <div className='plot-container'>
+        {!_.isEmpty(config.data) && (
+          <UseG2Plot
+            Ctor={Line}
+            className="plot-container-left"
+            options={config}
+            // @ts-ignore
+            onReady={chartInstance => (setChart(chartInstance))}
+          />
+        )}
+        {
+          attributes.legendTable?.show && config.seriesField && !_.isEmpty(config.data) && (
+            <LegendTable {...config} plot={chart} className="plot-container-right" showColumnList={attributes.legendTable.showColumnList} />
+          )
+        }
+      </div>
     </div>
   );
 };
