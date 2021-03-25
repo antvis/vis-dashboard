@@ -1,0 +1,32 @@
+.explaination {
+  height: 100%;
+  max-width: 250px;
+
+  &>.title {
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    opacity: 0.85;
+  }
+
+  .detail {
+    overflow-y: auto;
+    height: 100%;
+
+    .detail-item {
+      &:not(:first-child) {
+        margin-top: 24px;
+      }
+  
+      .title {
+        margin-bottom: 12px;
+        opacity: 0.85;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+      }
+      .description {
+        opacity: 0.65;
+      }
+    }
+  }
+}
