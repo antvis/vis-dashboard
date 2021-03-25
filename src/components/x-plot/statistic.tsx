@@ -25,14 +25,18 @@ export const XStatistic: React.FC<XPlotProps> = props => {
         {measures.map((measure, idx) => {
           const dataValue = _.get(data, ['0', measure]);
           const dataName = _.get(meta, [measure, 'alias']);
+          const icon = _.get(meta, [measure, 'icon']);
           return (
-            <Statistic
-              key={`${idx}`}
-              title={dataName}
-              value={dataValue}
-              precision={0}
-              style={{ flex: 1 }}
-            />
+            <div className='statistic-item'>
+              {icon && <div className='icon'>{icon}</div>}
+              <Statistic
+                key={`${idx}`}
+                title={dataName}
+                value={dataValue}
+                precision={0}
+                style={{ flex: 1 }}
+              />
+            </div>
           );
         })}
       </div>
