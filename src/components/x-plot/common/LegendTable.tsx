@@ -168,7 +168,6 @@ export const LegendTable: React.FC<Props> = (props) => {
   return (
     <Table
       className={`legend-table ${className}`}
-      tableLayout="auto"
       size='small'
       rowKey={seriesField}
       dataSource={tableData}
@@ -176,7 +175,7 @@ export const LegendTable: React.FC<Props> = (props) => {
       pagination={false}
       rowClassName={(record) => {
         const key = _.get(record, seriesField);
-        return _.includes(selected, key) ? '' : 'unselected-row';
+        return _.includes(selected, key) ? 'row' : 'row unselected-row';
       }}
       onRow={(record) => ({
         onClick: () => {
