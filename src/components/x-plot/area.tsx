@@ -3,9 +3,9 @@ import { Area, AreaOptions } from '@antv/g2plot';
 import * as _ from 'lodash';
 import { Header } from '@/components/x-plot/common/header';
 import { UseG2Plot } from '@/components/x-plot/common/use-g2plot';
+import { Explaination, ExplainationProps } from '@/components/x-plot/common/explaination';
 import { XComponentProps } from '@/types';
 import { getData } from '@/utils/get-data';
-import { Explaination } from './common/explaination';
 
 export const getColor = (
   attributes: XComponentProps<AreaOptions>['attributes']
@@ -18,14 +18,12 @@ export const getColor = (
 };
 
 type XAreaProps = XComponentProps<AreaOptions & {
-  explaination: {
-    title: string;
-    details: Array<{ icon?: ReactNode; title: string; description: string }>;
-  }
+  explaination: ExplainationProps
 }>;
 
 export const XArea: React.FC<XAreaProps> = props => {
   const { attributes } = props;
+  const { explaination } = attributes;
 
   let chart: Area;
   const [config, updateConfig] = useState({
@@ -63,7 +61,7 @@ export const XArea: React.FC<XAreaProps> = props => {
             onReady={chartInstance => (chart = chartInstance)}
           />
         )}
-        {!_.isEmpty(attributes.explaination) && <Explaination {...attributes.explaination} className="plot-container-right" />}
+        {!_.isEmpty(explaination) && <Explaination {...explaination} className="plot-container-right" />}
       </div>
     </div>
   );

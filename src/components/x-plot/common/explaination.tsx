@@ -3,20 +3,25 @@ import * as _ from 'lodash';
 import { Col, Row } from 'antd';
 import "./explaination.less";
 
-interface Props {
+interface ExplainationDetailType {
+  icon?: ReactNode;
+  title: string | ReactNode;
+  description: string | ReactNode;
+}
+export interface ExplainationProps {
   className: string;
   title: string | ReactNode;
-  details: Array<{ icon?: ReactNode; title: string | ReactNode; description: string | ReactNode }>;
+  details: Array<ExplainationDetailType>;
 }
 
-export const Explaination: React.FC<Props> = (props) => {
+export const Explaination: React.FC<ExplainationProps> = (props) => {
   const { title, details, className = '' } = props;
   return (
     <div className={`${className} explaination`}>
       <div className='title'>{title}</div>
       <div className='detail'>
-        {_.map(details, item => (
-          <Row className='detail-item'>
+        {_.map(details, (item, index) => (
+          <Row className='detail-item' key={index}>
             {item.icon && <Col span={2}>{item.icon}</Col>}
             <Col span={22}>
               <Row className='title'>{item.title}</Row>
