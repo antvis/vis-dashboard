@@ -173,7 +173,6 @@ export const LegendTable: React.FC<Props> = (props) => {
         const key = _.get(record, seriesField);
         return _.includes(selected, key) ? 'row' : 'row unselected-row';
       }}
-      sticky
       onRow={(record) => ({
         onClick: () => {
           setSelected(old => {
