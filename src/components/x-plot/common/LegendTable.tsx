@@ -126,28 +126,24 @@ export const LegendTable: React.FC<Props> = (props) => {
         title: '最大值',
         dataIndex: 'max',
         key: 'max',
-        // defaultSortOrder: 'descend',
         sorter: (a, b) => a.max - b.max,
       },
       {
         title: '最小值',
         dataIndex: 'min',
         key: 'min',
-        // defaultSortOrder: 'descend',
         sorter: (a, b) => a.min - b.min,
       },
       {
         title: '平局值',
         dataIndex: 'avg',
         key: 'avg',
-        // defaultSortOrder: 'descend',
         sorter: (a, b) => a.avg - b.avg,
       },
       {
         title: '总和',
         dataIndex: 'sum',
         key: 'sum',
-        // defaultSortOrder: 'descend',
         sorter: (a, b) => a.sum - b.sum,
       },
       {
@@ -168,7 +164,6 @@ export const LegendTable: React.FC<Props> = (props) => {
   return (
     <Table
       className={`legend-table ${className}`}
-      tableLayout="auto"
       size='small'
       rowKey={seriesField}
       dataSource={tableData}
@@ -176,7 +171,7 @@ export const LegendTable: React.FC<Props> = (props) => {
       pagination={false}
       rowClassName={(record) => {
         const key = _.get(record, seriesField);
-        return _.includes(selected, key) ? '' : 'unselected-row';
+        return _.includes(selected, key) ? 'row' : 'row unselected-row';
       }}
       onRow={(record) => ({
         onClick: () => {
