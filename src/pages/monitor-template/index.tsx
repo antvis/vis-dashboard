@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@/layouts/layout';
 import { parse } from '@/components/x-plot/common/parse';
-import { monitorJson } from '@/datas/monitor-template.tsx';
+import { monitorJson } from '@/datas/monitor-template';
 import './index.less';
 
 const SecondPage = () => {
