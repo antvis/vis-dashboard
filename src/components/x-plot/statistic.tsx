@@ -27,7 +27,7 @@ export const XStatistic: React.FC<XPlotProps> = props => {
           const dataName = _.get(meta, [measure, 'alias']);
           const icon = _.get(meta, [measure, 'icon']);
           return (
-            <div className='statistic-item'>
+            <div className='statistic-item' key={`${idx}`}>
               {icon && <div className='icon'>{icon}</div>}
               <Statistic
                 key={`${idx}`}
