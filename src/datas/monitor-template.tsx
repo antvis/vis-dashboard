@@ -150,7 +150,7 @@ export const monitorJson = {
         },
       },
       {
-        tag: 'liguid',
+        tag: 'liquid',
         id: 'e',
         attributes: {
           title: '访问频次发布',
@@ -159,6 +159,10 @@ export const monitorJson = {
           autoFit: true,
           radius: 1,
           percent: 0.32,
+          appendPadding: 0,
+          wave: {
+            legend: 40,
+          },
           outline: {
             distance: 2,
           },
@@ -237,7 +241,7 @@ export const monitorJson = {
         id: 'h',
         attributes: {
           title: '秒级总量监控',
-          data: 'https://gw.alipayobjects.com/os/antfincdn/hVbmBcXCIZ/monitor-data1.json',
+          data: 'https://gw.alipayobjects.com/os/antfincdn/B%26OYH6JjXm/monitor-data1.json',
           xField: 'time',
           yField: 'value',
           seriesField: 'type',

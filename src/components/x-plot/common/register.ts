@@ -43,7 +43,7 @@ registerComponent('sankey', XSankey);
 registerComponent('scatter', XScatter);
 registerComponent('gauge', XGauge);
 registerComponent('statistic', XStatistic);
-registerComponent('liguid', XLiquid);
+registerComponent('liquid', XLiquid);
 
 /**
  * 容器，可以创建 react-grid-layout

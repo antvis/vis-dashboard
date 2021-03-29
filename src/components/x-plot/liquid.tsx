@@ -13,21 +13,21 @@ const Default_Options = {
     fill: '#6193FA',
     stroke: '#6193FA',
   }),
-}
+};
 
 export const XLiquid: React.FC<XLiquidProps> = props => {
-  const {attributes} = props;
+  const { attributes } = props;
 
   const [options, updateOptions] = useState({ percent: 0 });
 
   useEffect(() => {
-    updateOptions(_.assign({}, Default_Options, attributes))
-  }, [attributes])
+    updateOptions(_.assign({}, Default_Options, attributes));
+  }, [attributes]);
 
   return (
-    <div data-type='liquid' className="full x-plot">
+    <div data-type="liquid" className="full x-plot">
       <Header {...props} />
       <UseG2Plot Ctor={Liquid} options={options} className="plot-container" />
     </div>
-  )
-}
+  );
+};
