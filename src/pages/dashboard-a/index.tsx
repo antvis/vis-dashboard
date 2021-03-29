@@ -10,7 +10,10 @@ const SecondPage = () => {
   useEffect(() => {
     const observer = new MutationObserver(([record]) => {
       // temp1[0].target.getAttribute(temp1[0].attributeName)
-      if (record.target.nodeName === 'BODY' && record.attributeName === 'data-theme') {
+      if (
+        record.target.nodeName === 'BODY' &&
+        record.attributeName === 'data-theme'
+      ) {
         const theme = document.body.dataset.theme;
         updateJson({ ...json, theme });
       }
