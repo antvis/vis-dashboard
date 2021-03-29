@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@/layouts/layout';
-import { Home } from '@/components/home';
+import { Home } from '@/components/base/home';
 
 export default () => {
   const dashboards = [
@@ -15,6 +15,18 @@ export default () => {
         'https://gw.alipayobjects.com/zos/antfincdn/wuk2prOsEL/placeholder.png',
       name: '监控场景',
       path: 'monitor-template',
+    },
+    {
+      image:
+        'https://gw.alipayobjects.com/zos/antfincdn/wuk2prOsEL/placeholder.png',
+      name: '建设中',
+      path: null,
+    },
+    {
+      image:
+        'https://gw.alipayobjects.com/zos/antfincdn/wuk2prOsEL/placeholder.png',
+      name: '建设中',
+      path: null,
     },
   ];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import './index.less';
+import './home.less';
 
 type Props = {
   dashboards: { image: string; name: string; path: string }[];
@@ -8,7 +8,7 @@ type Props = {
 
 export const Home: React.FC<Props> = ({ dashboards }) => {
   const gotoDashboard = (path: string) => {
-    navigate(`../${path}`);
+    path && navigate(`../${path}`);
   };
 
   return (
@@ -16,7 +16,7 @@ export const Home: React.FC<Props> = ({ dashboards }) => {
       {dashboards.map(({ image, name, path }, idx) => {
         return (
           <div
-            className="dashboard-item"
+            className={`dashboard-item ${!path ? 'disable' : ''}`}
             style={{ backgroundImage: `url(${image})` }}
             key={`${idx}`}
           >
