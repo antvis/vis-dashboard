@@ -40,4 +40,3 @@ jobs:
           directory: public
           branch: gh-pages
           force: true
-·
