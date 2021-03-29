@@ -181,8 +181,8 @@ export const monitorJson = {
         // 面积图扩展。attribues 扩展 explaination （注意下，屏幕小的时候，布局自动变换为 上下）
         attributes: {
           title: '整体流量趋势',
-          data: [{ "type": "板烧鸡腿堡", "value": 830 }, { "type": "薯条", "value": 780 }, { "type": "鸡翅", "value": 730 }, { "type": "吮指原味鸡块", "value": 560 }, { "type": "超值全家桶套餐", "value": 510 }, { "type": "薯饼", "value": 370 }, { "type": "老北京鸡肉卷", "value": 330 }, { "type": "玉米沙拉杯", "value": 280 }, { "type": "黑金牛肉堡", "value": 220 }, { "type": "吉士汉堡", "value": 130 }],
-          xField: 'type',
+          data: [{"value":156183,"time":"2021-03-29"},{"value":274731,"time":"2021-04-29"},{"value":421680,"time":"2021-05-29"},{"value":694329,"time":"2021-06-29"},{"value":827597,"time":"2021-07-29"},{"value":878775,"time":"2021-08-29"},{"value":1204784,"time":"2021-09-29"},{"value":1044414,"time":"2021-10-29"},{"value":1301583,"time":"2021-11-29"},{"value":1826632,"time":"2021-12-29"},{"value":1979659,"time":"2022-01-29"},{"value":2262575,"time":"2022-02-28"},{"value":1598468,"time":"2022-03-28"},{"value":2124546,"time":"2022-04-28"},{"value":2848808,"time":"2022-05-28"},{"value":3065085,"time":"2022-06-28"},{"value":1993866,"time":"2022-07-28"},{"value":2415007,"time":"2022-08-28"},{"value":3268743,"time":"2022-09-28"},{"value":3083374,"time":"2022-10-28"}],
+          xField: 'time',
           yField: 'value',
           color: ['#6193FA'],
           areaStyle: ({type}) => ({
@@ -246,7 +246,7 @@ export const monitorJson = {
           color: ['#0362C5', '#ACBCD8', '#008CAF', '#6193FA', '#81ADFD', '#00A6CA', '#4DDCF4'],
           legendTable: {
             show: true,
-            showColumnList: ['max', 'current']
+            showColumnList: ['max', 'min']
           }
         }
       },
