@@ -8,13 +8,13 @@ import { Line, G2 } from '@antv/g2plot';
 import { Table } from 'antd';
 import './legendTable.less';
 
-type Props = {
+export type LegendTableProps = {
   className: string,
   plot: Line,
   showColumnList: Array<'max' | 'min' | 'avg' | 'sum'>;
 }
 
-export const LegendTable: React.FC<Props> = (props) => {
+export const LegendTable: React.FC<LegendTableProps> = (props) => {
   const { className = '', plot, showColumnList = [] } = props;
   if (!plot) return null;
   const { data, seriesField, yField, xField } = plot.options;
@@ -22,7 +22,7 @@ export const LegendTable: React.FC<Props> = (props) => {
   // 选中的 legend
   const [selected, setSelected] = useState([]);
 
-  /** ② 处理 legend 表格数据 */
+  /** ① 处理 legend 表格数据 */
   const tableData = useMemo(() => {
     const colors = _.get(plot, ['options', 'color'], []);
     const newData = _.flow(
@@ -56,7 +56,7 @@ export const LegendTable: React.FC<Props> = (props) => {
     return newData
   }, [data, plot]);
 
-  /** ③ 处理表格 column start */
+  /** ② 处理表格 column */
   const columns = useMemo(() => {
     // 目前写死只有 指标、最大值、最小值、平均值、当前值，依据传入的 showColumnList 展示
     const list = [
@@ -101,7 +101,7 @@ export const LegendTable: React.FC<Props> = (props) => {
     return _.filter(list, item => [seriesField, ...showColumnList].includes(item.key));
   }, [seriesField, plot, showColumnList])
 
-  /** ④ 处理 legend 点击事件与图表的联动 */
+  /** ③ 处理 legend 点击事件与图表的联动 */
   useEffect(() => {
     plot.chart.filter(seriesField, value => _.includes(selected, value))
     plot.chart.render(true);
