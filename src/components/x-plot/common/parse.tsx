@@ -34,9 +34,14 @@ export const parse = (report: Report) => {
       key: `${reportNode.id}-d`,
       id: `${reportNode.id}-d`,
       tag: reportNode.tag,
-      attributes: _.assign({}, { color: THEME_COLORS, theme }, reportNode.attributes, {
-        layout: _.get(layouts, reportNode.id, {}),
-      }),
+      attributes: _.assign(
+        {},
+        { color: THEME_COLORS, theme },
+        reportNode.attributes,
+        {
+          layout: _.get(layouts, reportNode.id, {}),
+        }
+      ),
     },
     subComponents
   );

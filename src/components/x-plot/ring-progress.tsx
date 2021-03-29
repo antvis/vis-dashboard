@@ -6,20 +6,29 @@ import { Header } from '@/components/x-plot/common/header';
 import { UseG2Plot } from '@/components/x-plot/common/use-g2plot';
 import './ring-progress.less';
 
-type XPlotProps = XComponentProps<Attributes & {
-  /** 指标 */
-  measures: string[];
-  /** 元信息 */
-  meta: Record<string, { alias?: string; icon?: string }>;
-  /** 数据 */
-  data: object[];
-  /** 主题颜色 */
-  color?: string[];
-  style?: object;
-}>;
+type XPlotProps = XComponentProps<
+  Attributes & {
+    /** 指标 */
+    measures: string[];
+    /** 元信息 */
+    meta: Record<string, { alias?: string; icon?: string }>;
+    /** 数据 */
+    data: object[];
+    /** 主题颜色 */
+    color?: string[];
+    style?: object;
+  }
+>;
 
 export const XRingProgress: React.FC<XPlotProps> = props => {
-  const { measures, style, data, meta, color = ['#009CFF'], theme } = props.attributes;
+  const {
+    measures,
+    style,
+    data,
+    meta,
+    color = ['#009CFF'],
+    theme,
+  } = props.attributes;
 
   return (
     <div data-type="ring-progress" className="full x-plot" style={style || {}}>
@@ -32,7 +41,10 @@ export const XRingProgress: React.FC<XPlotProps> = props => {
 
           const config = {
             percent: dataValue,
-            color: [strokeColor, theme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.05)'],
+            color: [
+              strokeColor,
+              theme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.05)',
+            ],
             radius: 0.94,
             progressStyle: { lineCap: 'round' as const },
             statistic: {
@@ -67,7 +79,11 @@ export const XRingProgress: React.FC<XPlotProps> = props => {
               className="ring-progress-container"
               style={{ width: `${(1 / measures.length) * 100}%` }}
             >
-              <UseG2Plot<RingProgressOptions> Ctor={RingProgress} options={config} style={{ width: '100%', height: '100%'}} />
+              <UseG2Plot<RingProgressOptions>
+                Ctor={RingProgress}
+                options={config}
+                style={{ width: '100%', height: '100%' }}
+              />
             </div>
           );
         })}

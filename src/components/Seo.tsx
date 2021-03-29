@@ -34,7 +34,7 @@ const SEO: React.FC<SEOProps> = ({
           }
         }
       }
-    `,
+    `
   );
 
   const metaDescription = description || site.siteMetadata.description;
