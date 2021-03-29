@@ -11,7 +11,7 @@ import './legendTable.less';
 type Props = {
   className: string,
   plot: Line,
-  showColumnList: Array<'max' | 'min' | 'avg' | 'sum' | 'current'>;
+  showColumnList: Array<'max' | 'min' | 'avg' | 'sum'>;
 }
 
 export const LegendTable: React.FC<Props> = (props) => {
@@ -19,50 +19,13 @@ export const LegendTable: React.FC<Props> = (props) => {
   if (!plot) return null;
   const { data, seriesField, yField, xField } = plot.options;
   if (!seriesField) return null;
-  // 当前值 默认第一个数据
-  const [currentIndex, setCurrentIndex] = useState(_.get(data, [0, xField]));
   // 选中的 legend
   const [selected, setSelected] = useState([]);
 
-  /** ① 注册 tooltip 锁定事件 start */
-  useEffect(() => {
-    G2.registerInteraction('locked-tooltip', {
-      start: [
-        {
-          trigger: "plot:click",
-          action: context => {
-            const locked = context.view.isTooltipLocked();
-            if (locked) {
-              // 如果已锁定，解锁
-              context.view.unlockTooltip();
-              context.view.emit("tooltip:unlock");
-            } else {
-              // 如果未锁定，根据鼠标坐标获得对应数据 X轴 的值
-              const { x, y } = context.event;
-              const data = context.view.getSnapRecords({ x, y });
-              const xValue: number | undefined = data.length
-                ? data[0]._origin[xField]
-                : undefined;
-              context.view.emit("tooltip:lock", xValue);
-              context.view.lockTooltip();
-            }
-          }
-        },
-        { trigger: "plot:mousemove", action: "tooltip:show" }
-      ],
-      end: [{ trigger: "plot:mouseleave", action: "tooltip:hide" }]
-    });
-    // 如果不展示当前值，不开启锁定 tooltip 功能
-    if (!showColumnList.includes('current')) return;
-    plot.chart.interaction('locked-tooltip');
-    plot.chart.on('tooltip:lock', (key) => setCurrentIndex(key));
-    return () => plot.chart.removeInteraction('locked-tooltip');
-  }, [])
-
-  /** ② 处理 legend 表格数据 start */
-  const dataInfo = useMemo(() => {
+  /** ② 处理 legend 表格数据 */
+  const tableData = useMemo(() => {
     const colors = _.get(plot, ['options', 'color'], []);
-    return _.flow(
+    const newData = _.flow(
       // 依据 seriesField 分组
       (data) => _.groupBy(data, seriesField),
       // 对分组数据计算最大值、最小值、总和、平均值
@@ -88,22 +51,10 @@ export const LegendTable: React.FC<Props> = (props) => {
       // 依据顺序绑定对应的 color（存在排序，需绑定 color ）
       (data) => _.map(data, (item, index) => ({ ...item, color: colors[index] })),
     )(data);
-  }, [data, plot]);
-
-  const tableData = useMemo(() => {
     // 初始化 selected ，默认全部选中
-    setSelected(_.map(dataInfo, item => item[seriesField]) || []);
-    // 数据源添加当前值（锁定 tooltip 时的值）
-    const currentValue = _.filter(data, item => item[xField] === currentIndex);
-    return _.map(dataInfo, item => {
-      return {
-        ...item,
-        current: _.get(
-          _.find(currentValue, { [seriesField]: item[seriesField] }),
-          yField)
-      }
-    })
-  }, [dataInfo, data, currentIndex, xField, seriesField])
+    setSelected(_.map(newData, item => item[seriesField]) || []);
+    return newData
+  }, [data, plot]);
 
   /** ③ 处理表格 column start */
   const columns = useMemo(() => {
@@ -146,14 +97,9 @@ export const LegendTable: React.FC<Props> = (props) => {
         key: 'sum',
         sorter: (a, b) => a.sum - b.sum,
       },
-      {
-        title: currentIndex,
-        dataIndex: 'current',
-        key: 'current'
-      }
     ];
     return _.filter(list, item => [seriesField, ...showColumnList].includes(item.key));
-  }, [seriesField, plot, showColumnList, currentIndex])
+  }, [seriesField, plot, showColumnList])
 
   /** ④ 处理 legend 点击事件与图表的联动 */
   useEffect(() => {
