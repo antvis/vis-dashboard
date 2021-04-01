@@ -5,7 +5,7 @@ import { Header } from '@/components/x-plot/common/header';
 import { UseG2Plot } from '@/components/x-plot/common/use-g2plot';
 import { XComponentProps } from '@/types';
 import { getData } from '@/utils/get-data';
-import { LegendTable, LegendTableProps } from './common/legendTable';
+import { LegendTable, LegendTableProps } from '@/components/x-plot/common/legend-table';
 
 type XLineProps = XComponentProps<{
   legendTable?: LegendTableProps,

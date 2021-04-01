@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import * as _ from 'lodash';
 import { Line, G2 } from '@antv/g2plot';
 import { Table } from 'antd';
-import './legendTable.less';
+import './legend-table.less';
 
 export type LegendTableProps = {
   className: string,

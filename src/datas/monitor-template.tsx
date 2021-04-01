@@ -6,30 +6,41 @@ export const monitorJson = {
   layouts: {
     root: {
       lg: [
-        { w: 6, h: 5, x: 0, y: 0, i: 'a', moved: false, static: false },
-        { w: 6, h: 5, x: 6, y: 0, i: 'b', moved: false, static: false },
-        { w: 6, h: 5, x: 12, y: 0, i: 'c', moved: false, static: false },
-        { w: 6, h: 5, x: 18, y: 0, i: 'd', moved: false, static: false },
-        { w: 6, h: 11, x: 0, y: 5, i: "e", moved: false, static: false },
-        { w: 18, h: 11, x: 6, y: 5, i: "f", moved: false, static: false },
-        { w: 24, h: 11, x: 0, y: 16, i: "g", moved: false, static: false },
-        { w: 24, h: 12, x: 0, y: 27, i: "h", moved: false, static: false },
-        { w: 12, h: 11, x: 0, y: 40, i: "i", moved: false, static: false },
-        { w: 12, h: 11, x: 12, y: 40, i: "j", moved: false, static: false },
+        { w: 6, h: 5, x: 0, y: 0, i: 'a' },
+        { w: 6, h: 5, x: 6, y: 0, i: 'b' },
+        { w: 6, h: 5, x: 12, y: 0, i: 'c' },
+        { w: 6, h: 5, x: 18, y: 0, i: 'd' },
+        { w: 6, h: 11, x: 0, y: 5, i: "e" },
+        { w: 18, h: 11, x: 6, y: 5, i: "f" },
+        { w: 24, h: 11, x: 0, y: 16, i: "g" },
+        { w: 24, h: 12, x: 0, y: 27, i: "h" },
+        { w: 12, h: 11, x: 0, y: 40, i: "i" },
+        { w: 12, h: 11, x: 12, y: 40, i: "j" },
       ],
       xs: [
-        { i: ' a', x: 0, y: 0, w: 12, h: 6 },
-        { i: ' b', x: 0, y: 6, w: 12, h: 8 },
-        { i: ' c', x: 7, y: 22, w: 5, h: 13 },
-        { i: ' d', x: 0, y: 22, w: 7, h: 13 },
-        { i: ' e', x: 0, y: 14, w: 6, h: 8 },
-        { i: ' f', x: 6, y: 14, w: 6, h: 8 },
-        { i: ' g', x: 6, y: 35, w: 6, h: 14 },
-        { i: ' h', x: 0, y: 73, w: 6, h: 14 },
-        { i: ' i', x: 0, y: 49, w: 12, h: 13 },
-        { i: ' j', x: 0, y: 62, w: 12, h: 11 },
-        { i: ' k', x: 6, y: 73, w: 6, h: 14 },
-        { i: ' l', x: 0, y: 35, w: 6, h: 14 }]
+        { w: 6, h: 4, x: 0, y: 0, i: "a" },
+        { w: 6, h: 4, x: 6, y: 0, i: "b" },
+        { w: 6, h: 4, x: 0, y: 4, i: "c" },
+        { w: 6, h: 4, x: 6, y: 4, i: "d" },
+        { w: 6, h: 10, x: 0, y: 8, i: "e" },
+        { w: 12, h: 10, x: 0, y: 18, i: "f" },
+        { w: 6, h: 10, x: 6, y: 8, i: "g" },
+        { w: 12, h: 11, x: 0, y: 28, i: "h" },
+        { w: 6, h: 10, x: 0, y: 39, i: "i" },
+        { w: 6, h: 10, x: 6, y: 39, i: "j" },
+      ],
+      xxs: [
+        { w: 4, h: 4, x: 0, y: 0, i: "a" },
+        { w: 4, h: 4, x: 0, y: 4, i: "b" },
+        { w: 4, h: 4, x: 0, y: 8, i: "c" },
+        { w: 4, h: 4, x: 0, y: 12, i: "d" },
+        { w: 4, h: 12, x: 0, y: 16, i: "e" },
+        { w: 4, h: 20, x: 0, y: 25, i: "f" },
+        { w: 4, h: 12, x: 0, y: 31, i: "g" },
+        { w: 4, h: 20, x: 0, y: 42, i: "h" },
+        { w: 4, h: 12, x: 0, y: 54, i: "i" },
+        { w: 4, h: 12, x: 0, y: 66, i: "j" },
+      ]
     },
   },
   content: {
@@ -185,11 +196,11 @@ export const monitorJson = {
         // 面积图扩展。attribues 扩展 explaination （注意下，屏幕小的时候，布局自动变换为 上下）
         attributes: {
           title: '整体流量趋势',
-          data: [{"value":156183,"time":"2021-03-29"},{"value":274731,"time":"2021-04-29"},{"value":421680,"time":"2021-05-29"},{"value":694329,"time":"2021-06-29"},{"value":827597,"time":"2021-07-29"},{"value":878775,"time":"2021-08-29"},{"value":1204784,"time":"2021-09-29"},{"value":1044414,"time":"2021-10-29"},{"value":1301583,"time":"2021-11-29"},{"value":1826632,"time":"2021-12-29"},{"value":1979659,"time":"2022-01-29"},{"value":2262575,"time":"2022-02-28"},{"value":1598468,"time":"2022-03-28"},{"value":2124546,"time":"2022-04-28"},{"value":2848808,"time":"2022-05-28"},{"value":3065085,"time":"2022-06-28"},{"value":1993866,"time":"2022-07-28"},{"value":2415007,"time":"2022-08-28"},{"value":3268743,"time":"2022-09-28"},{"value":3083374,"time":"2022-10-28"}],
+          data: [{ "value": 156183, "time": "2021-03-29" }, { "value": 274731, "time": "2021-04-29" }, { "value": 421680, "time": "2021-05-29" }, { "value": 694329, "time": "2021-06-29" }, { "value": 827597, "time": "2021-07-29" }, { "value": 878775, "time": "2021-08-29" }, { "value": 1204784, "time": "2021-09-29" }, { "value": 1044414, "time": "2021-10-29" }, { "value": 1301583, "time": "2021-11-29" }, { "value": 1826632, "time": "2021-12-29" }, { "value": 1979659, "time": "2022-01-29" }, { "value": 2262575, "time": "2022-02-28" }, { "value": 1598468, "time": "2022-03-28" }, { "value": 2124546, "time": "2022-04-28" }, { "value": 2848808, "time": "2022-05-28" }, { "value": 3065085, "time": "2022-06-28" }, { "value": 1993866, "time": "2022-07-28" }, { "value": 2415007, "time": "2022-08-28" }, { "value": 3268743, "time": "2022-09-28" }, { "value": 3083374, "time": "2022-10-28" }],
           xField: 'time',
           yField: 'value',
           color: ['#6193FA'],
-          areaStyle: ({type}) => ({
+          areaStyle: ({ type }) => ({
             fill: `l(90) 0.5:#6193FA 1:rgba(255,255,255,0.2)`
           }),
           // 抽取一个组件 Exlaination （组件注释下使用）

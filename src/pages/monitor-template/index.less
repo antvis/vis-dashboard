@@ -49,7 +49,23 @@
 }
 
 // 屏幕适配下
-@media (max-width: 414px) {
+@media (max-width: 500px) {
+
+  .x-plot {
+    .plot-container {
+      flex-direction: column;
+
+      &-left {
+        width: 100% !important;
+        height: 0 !important;
+      }
+
+      &-right {
+        margin-top: 16px;
+        margin-left: unset !important;
+      }
+    }
+  }
 
   .g2-html-annotation,
   .g2-html-annotation :not(.ring-annotation) * {

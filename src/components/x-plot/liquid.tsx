@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 
 type XLiquidProps = XComponentProps<LiquidOptions>;
 
-const Default_Options = {
+const DEFAULT_OPTIONS = {
   // 添加默认水波图样式（不然只显示中心文案）
   liquidStyle: () => ({
     fill: '#6193FA',
@@ -21,7 +21,7 @@ export const XLiquid: React.FC<XLiquidProps> = props => {
   const [options, updateOptions] = useState({ percent: 0 });
 
   useEffect(() => {
-    updateOptions(_.assign({}, Default_Options, attributes));
+    updateOptions(_.assign({}, DEFAULT_OPTIONS, attributes));
   }, [attributes]);
 
   return (
