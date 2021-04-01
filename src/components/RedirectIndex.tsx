@@ -5,7 +5,7 @@ import PageLoading from './base/page-loading';
 
 const RedirectIndex = () => {
   useEffect(() => {
-    navigate('home');
+    navigate('dashboard-a');
   }, []);
 
   const renderIndex = (data: {

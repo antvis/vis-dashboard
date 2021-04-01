@@ -14,11 +14,9 @@ import './layout.less';
 type Props = {
   hideSiteTitle?: boolean;
   siteTitle?: string;
-  mainStyle?: React.CSSProperties;
-  themeSwitcher?: boolean;
 };
 
-const Layout: React.FC<Props> = ({ children, siteTitle, hideSiteTitle, mainStyle, themeSwitcher }) => {
+const Layout: React.FC<Props> = ({ children, siteTitle, hideSiteTitle }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,6 +25,7 @@ const Layout: React.FC<Props> = ({ children, siteTitle, hideSiteTitle, mainStyle
           githubUrl
           author
           contact
+          wechat
         }
       }
     }
@@ -36,12 +35,13 @@ const Layout: React.FC<Props> = ({ children, siteTitle, hideSiteTitle, mainStyle
 
   return (
     <>
-      {!hideSiteTitle && <Header siteTitle={siteTitle || title} themeSwitcher={themeSwitcher} />}
-      <main style={mainStyle}>{children}</main>
+      {!hideSiteTitle && <Header siteTitle={siteTitle || title} />}
+      <main>{children}</main>
       <Footer
         author={author}
         githubUrl={githubUrl}
         contact={contact}
+        wechat={wechat}
       />
     </>
   );

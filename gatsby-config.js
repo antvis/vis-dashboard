@@ -5,6 +5,7 @@ module.exports = {
     githubUrl: 'https://github.com/antvis/vis-dashboard',
     author: 'visiky',
     contact: 'https://github.com/visiky',
+    wechat: 'https://gw.alipayobjects.com/zos/antfincdn/4NqKnYGSyO/wechart.JPG',
   },
   plugins: [
     {
