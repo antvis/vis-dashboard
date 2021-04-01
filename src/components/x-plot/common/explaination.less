@@ -1,0 +1,57 @@
+@title-height: 42px;
+
+.explaination {
+  height: 100%;
+  max-width: 250px;
+
+  &>.title {
+    height: @title-height;
+    line-height: @title-height;
+    font-size: 16px;
+    opacity: 0.85;
+  }
+
+  .detail {
+    overflow-y: auto;
+    height: 100%;
+
+    .detail-item {
+      &:not(:first-child) {
+        margin-top: 24px;
+      }
+  
+      .title {
+        margin-bottom: 12px;
+        opacity: 0.85;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+      }
+      .description {
+        opacity: 0.65;
+      }
+    }
+  }
+}
+
+@media(max-width: 500px) {
+ .explaination {
+   width: 100%;
+   max-height: 180px;
+   max-width: unset;
+   margin-top: 12px !important;
+
+   .detail {
+    height: calc(100% - @title-height);
+
+    .detail-item {
+      &:not(:first-child) {
+        margin-top: 16px;
+      }
+  
+      .title {
+        margin-bottom: 10px;
+      }
+    }
+  }
+ } 
+}
