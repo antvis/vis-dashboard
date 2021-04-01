@@ -5,13 +5,10 @@ import { Header } from '@/components/x-plot/common/header';
 import { UseG2Plot } from '@/components/x-plot/common/use-g2plot';
 import { XComponentProps } from '@/types';
 import { getData } from '@/utils/get-data';
-import { LegendTable } from '@/components/x-plot/common/legend-table';
+import { LegendTable, LegendTableProps } from '@/components/x-plot/common/legend-table';
 
 type XLineProps = XComponentProps<{
-  legendTable?: {
-    show: boolean,
-    showColumnList: Array<'max' | 'min' | 'avg' | 'sum' | 'current'>;
-  },
+  legendTable?: LegendTableProps,
 } & LineOptions>;
 
 export const XLine: React.FC<XLineProps> = props => {
