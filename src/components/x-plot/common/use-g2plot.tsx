@@ -33,9 +33,11 @@ export function UseG2Plot<O>({
     }
     if (container.current) {
       const plot = new Ctor(container.current, options);
-      plot.render();
       plotRef.current = plot;
       listenEvents();
+      plot.render();
+      // fixMe: 折线图不能触发 afterRender 事件，暂时手动触发;
+      plot.emit(G2.VIEW_LIFE_CIRCLE.AFTER_RENDER);
     }
   }, [container]);
 
