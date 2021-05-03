@@ -6,13 +6,16 @@ export default () => {
   const dashboards = [
     {
       image:
-        'https://gw.alipayobjects.com/zos/antfincdn/wuk2prOsEL/placeholder.png',
+        'https://gw.alipayobjects.com/zos/antfincdn/BPnCLgmtzC/1096*560_light.png',
+      darkImage:
+        'https://gw.alipayobjects.com/zos/antfincdn/0GDWIEjbkO/1094*560.png',
       name: 'C 端场景',
       path: 'dashboard-a',
     },
     {
       image:
-        'https://gw.alipayobjects.com/zos/antfincdn/wuk2prOsEL/placeholder.png',
+        'https://gw.alipayobjects.com/zos/antfincdn/n%268Jqw3vKF/1096*560_light.png',
+        darkImage: 'https://gw.alipayobjects.com/zos/antfincdn/YI%241xJfKMf/2094*560.png',
       name: '监控场景',
       path: 'monitor-template',
     },

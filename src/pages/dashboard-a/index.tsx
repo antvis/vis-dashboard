@@ -1,30 +1,43 @@
 import React, { useEffect, useState } from 'react';
+import cx from 'classnames';
 import Layout from '@/layouts/layout';
 import { parse } from '@/components/x-plot/common/parse';
 import { reportJSON } from '@/datas/dashboard-a';
-import './index.less';
+import dashboardStyles from '@/styles/dashboard.module.less';
+import '@/styles/dark.less';
+import styles from './index.module.less';
 
 const SecondPage = () => {
+  const [themeMode, setThemeMode] = useState<string>();
   const [json, updateJson] = useState(reportJSON);
 
   useEffect(() => {
+    setThemeMode(document.body.dataset.theme);
+
     const observer = new MutationObserver(([record]) => {
-      // temp1[0].target.getAttribute(temp1[0].attributeName)
       if (
         record.target.nodeName === 'BODY' &&
         record.attributeName === 'data-theme'
       ) {
-        const theme = document.body.dataset.theme;
-        updateJson({ ...json, theme });
+        setThemeMode(document.body.dataset.theme);
       }
     });
 
     observer.observe(document.body, { attributes: true });
   }, []);
 
+  useEffect(() => {
+    updateJson({ ...json, theme: themeMode });
+  }, [themeMode]);
+
   return (
-    <Layout siteTitle="商家经营状况分析">
-      <div className="x-canvas">{parse(json)}</div>
+    <Layout
+      siteTitle="商家经营状况分析"
+      headerClassName={cx(dashboardStyles.header, styles.header)}
+      mainClassName={dashboardStyles.main}
+      footerClassName={styles.footer}
+    >
+      <div className={styles.xCanvas}>{parse(json)}</div>
     </Layout>
   );
 };

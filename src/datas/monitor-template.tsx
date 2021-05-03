@@ -168,7 +168,7 @@ export const monitorJson = {
           width: 400,
           height: 400,
           autoFit: true,
-          radius: 1,
+          radius: 0.98,
           percent: 0.32,
           appendPadding: 0,
           wave: {

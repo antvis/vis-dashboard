@@ -1,14 +1,16 @@
-@default-color: #009cff;
+@default-color: #873bf4;
 
 .dashboard-container {
   display: grid;
+  padding: 24px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-column-gap: 8px;
   grid-row-gap: 16px;
 
   .dashboard-item {
-    height: 180px;
+    // 1094 * 560px
+    height: calc(12.79vw - 8px);
     display: grid;
     position: relative;
 
@@ -18,7 +20,7 @@
 
     &:hover {
       cursor: pointer;
-      background-color: rgba(0, 156, 255, 0.45);
+      background-color: rgba(135, 59, 244, 0.25);
     }
 
     &.disable:hover {
@@ -34,7 +36,7 @@
       right: 0;
       bottom: 0;
       top: 0;
-      background-color: rgba(0, 156, 255, 0.45);
+      background-color: rgba(135, 59, 244, 0.25);
 
       display: flex;
       align-items: center;
@@ -53,7 +55,7 @@
       }
 
       &:hover {
-        background-color: rgba(0, 156, 255, 0.65);
+        background-color: rgba(135, 59, 244, 0.65);
 
         span {
           opacity: 1;
@@ -68,6 +70,11 @@
   .dashboard-container {
     grid-template-columns: 1fr 1fr 1fr;
     overflow-y: auto;
+
+    .dashboard-item {
+      // 1094 * 560px
+      height: calc(17.06vw - 8px);
+    }
   }
 }
 
@@ -75,6 +82,11 @@
   .dashboard-container {
     grid-template-columns: 1fr 1fr;
     overflow-y: auto;
+
+    .dashboard-item {
+      // 1094 * 560px
+      height: calc(25.59vw - 16px);
+    }
   }
 }
 
@@ -82,5 +94,10 @@
   .dashboard-container {
     grid-template-columns: 1fr;
     overflow-y: auto;
+
+    .dashboard-item {
+      // 1094 * 560px
+      height: calc(51.18vw - 24px);
+    }
   }
 }

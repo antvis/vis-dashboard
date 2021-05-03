@@ -4,18 +4,18 @@ body[data-theme='dark'] {
   @import '~antd/dist/antd.dark.less'; // 引入官方提供的暗色 less 样式入口文件
   @import '~antd/dist/antd.compact.less'; // 引入官方提供的紧凑 less 样式入口文件
   @background: rgba(0, 0, 0, 1);
-  
+
   background: @background !important;
-  
+
   #gatsby-focus-wrapper {
     background: @background;
   }
-  
+
   header,
   footer {
     background: #141414;
   }
-  
+
   .theme-switcher.ant-switch-checked {
     background: rgba(255, 255, 255, 0.25);
   }
@@ -95,5 +95,15 @@ body[data-theme='dark'] {
 
   .explaination {
     color: #fff !important;
+  }
+
+  // 复写 antd 样式
+  .ant-switch-inner {
+    margin: 0 25px 0 7px !important;
+  }
+
+  .ant-switch-handle {
+    left: unset !important;
+    right: 2px !important;
   }
 }

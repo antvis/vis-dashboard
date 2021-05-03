@@ -4,14 +4,14 @@
   'Segoe UI Symbol', sans-serif;
 
 @theme-dark-img: url('../static/images/theme-dark.svg');
-@theme-light-img: url('../static/images//theme-light.svg');
+@theme-light-img: url('../static/images/theme-light.svg');
 // 复写定制 gatsby 样式
 
 body {
   font-size: 14px;
   font-family: @font-family;
 
-  @background: #f2f4f7;
+  @background: #eaf2f6;
 
   height: 100vh;
   width: 100vw;
@@ -21,23 +21,23 @@ body {
     background: @background;
   }
 
-  @header-height: 28px;
-  @main-max-width: 1232px;
-  @main-padding: 12px;
+  @header-height: 56px;
+  @footer-height: 52px;
+  @main-padding-vertical: 12px;
+  @main-padding: 24px;
 
   main {
-    min-height: calc(100vh - 2rem - @header-height - 32px - 52px);
-    margin: 16px auto;
-    max-width: @main-max-width;
-    padding: 0 @main-padding;
+    min-height: calc(100vh - @header-height - @footer-height);
+    margin: 0;
+    padding: 0;
   }
 
   header {
-    background-color: #009cff;
+    background-color: #873bf4;
   }
 
   footer {
-    height: 52px;
+    height: @footer-height;
     padding: 0 24px;
   }
 
@@ -45,39 +45,22 @@ body {
     display: flex;
     align-items: center;
     margin: 0 auto;
-    padding: 1rem @main-padding;
+    padding: @main-padding-vertical @main-padding;
     color: #fff;
 
     .site-title {
       width: 100%;
-      max-width: calc(@main-max-width - @main-padding * 2);
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 0 auto;
-
-      // 主题切换开关
-      .theme-switcher {
-        transition: all ease 0.3s;
-
-        // 未选中时的样式
-        .ant-switch-handle::before {
-          background: @theme-light-img center center;
-        }
-        // 选中时的样式
-        &.ant-switch-checked {
-          .ant-switch-handle::before {
-            background: @theme-dark-img center center;
-          }
-        }
-      }
     }
 
     h1 {
       // 字体
       font-family: @font-family;
       font-size: 20px;
-      line-height: @header-height;
+      line-height: 32px;
       font-weight: 500;
       letter-spacing: 0;
       color: #fff;
@@ -88,6 +71,32 @@ body {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+  }
+
+  header {
+    .header-actions {
+      display: flex;
+      align-items: center;
+
+      .header-action {
+        cursor: pointer;
+
+        .anticon {
+          font-size: 16px;
+          svg {
+            fill: #fff;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+
+      .header-action:not(:last-child) {
+        margin-right: 24px;
+        margin-left: 0px;
+      }
     }
   }
 
@@ -110,20 +119,23 @@ body {
       margin-left: 12px;
     }
 
-    .github-icon,
-    .wechat-icon {
-      font-size: 16px;
-      svg {
-        fill: #fff;
-        &:hover {
-          fill: #009cff;
-          opacity: 0.8;
-        }
-      }
+    .author {
+      margin: 0 4px;
     }
+  }
+}
 
-    .wechat-icon {
-      transform: scale(1.2);
-    }
+// 在这里复写一下 antd 样式
+[class*='ant-popover-placement'] > .ant-popover-content > .ant-popover-arrow {
+  border-color: #fff !important;
+}
+
+.website-help-content {
+  color: rgba(0, 0, 0, 0.65);
+  // letter-spacing: 0.4em;
+}
+@media (max-width: 560px) {
+  .website-help-content {
+    width: 100%;
   }
 }

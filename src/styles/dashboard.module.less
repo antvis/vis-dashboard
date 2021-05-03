@@ -1,0 +1,21 @@
+@main-max-width: 1232px;
+@main-padding: 32px;
+
+.header {
+  padding: 1rem @main-padding;
+
+  :global {
+    .site-title {
+      max-width: calc(@main-max-width - @main-padding * 2);
+    }
+  }
+}
+
+.main {
+  height: auto;
+  margin: 16px auto;
+  max-width: @main-max-width;
+  padding: 0 @main-padding;
+
+  overflow: auto;
+}

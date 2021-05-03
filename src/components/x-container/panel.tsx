@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import { WidthProvider, Layout, Responsive, Layouts } from 'react-grid-layout';
+import { WidthProvider, Responsive, Layouts } from 'react-grid-layout';
 import { XComponentProps } from '@/types';
 import { isEditMode } from '@/utils/location';
 import PageLoading from '../base/page-loading';
@@ -18,10 +18,7 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
     setLayout(attributes.layout);
   }, [attributes.layout]);
 
-  const onLayoutChange = (newLayout: Layout[], allLayouts: Layouts) => {
-    // todo 发起请求保存
-    // console.log('layout', allLayouts);
-  };
+  const onLayoutChange = () => { };
 
   if (_.isEmpty(layout)) {
     return <PageLoading />;
@@ -36,10 +33,6 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
         rowHeight={10}
         isResizable={isEditMode()}
         isDraggable={isEditMode()}
-        // This turns off compaction so you can place items wherever.
-        // verticalCompact={false}
-        // This turns off rearrangement so items will not be pushed arround.
-        // preventCollision={true}
         onLayoutChange={onLayoutChange}
         draggableHandle=".grid-drag-handler"
         // Margin between items [x, y] in px.
