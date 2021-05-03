@@ -7,18 +7,31 @@
 
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import cx from 'classnames';
 import Header from './header';
 import Footer from './footer';
+import Seo from './seo';
 import './layout.less';
 
 type Props = {
   hideSiteTitle?: boolean;
   siteTitle?: string;
-  mainStyle?: React.CSSProperties;
-  themeSwitcher?: boolean;
+  /** 网站布局 · 头部 classname */
+  headerClassName?: string;
+  /** 网站布局 · 主体 classname */
+  mainClassName?: string;
+  /** 网站布局 · 脚部 classname */
+  footerClassName?: string;
 };
 
-const Layout: React.FC<Props> = ({ children, siteTitle, hideSiteTitle, mainStyle, themeSwitcher }) => {
+const Layout: React.FC<Props> = ({
+  children,
+  siteTitle,
+  hideSiteTitle,
+  headerClassName,
+  mainClassName,
+  footerClassName,
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -32,17 +45,20 @@ const Layout: React.FC<Props> = ({ children, siteTitle, hideSiteTitle, mainStyle
     }
   `);
 
-  const { title, githubUrl, contact, author, wechat } = data.site.siteMetadata;
+  const { title, githubUrl, contact, author } = data.site.siteMetadata;
 
   return (
     <>
-      {!hideSiteTitle && <Header siteTitle={siteTitle || title} themeSwitcher={themeSwitcher} />}
-      <main style={mainStyle}>{children}</main>
-      <Footer
-        author={author}
-        githubUrl={githubUrl}
-        contact={contact}
-      />
+      <Seo title="Vis Dashboard | AntV" />
+      {!hideSiteTitle && (
+        <Header
+          siteTitle={siteTitle || title}
+          githubUrl={githubUrl}
+          className={headerClassName}
+        />
+      )}
+      <main className={cx(mainClassName)}>{children}</main>
+      <Footer author={author} contact={contact} className={footerClassName} />
     </>
   );
 };
