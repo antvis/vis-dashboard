@@ -11,6 +11,8 @@ type Props = {
   }[];
 };
 
+const isBrowser = typeof document !== 'undefined';
+
 export const Home: React.FC<Props> = ({ dashboards }) => {
   const gotoDashboard = (path: string) => {
     path && navigate(`../${path}`);
@@ -19,14 +21,14 @@ export const Home: React.FC<Props> = ({ dashboards }) => {
   const [themeMode, setThemeMode] = useState<string>();
 
   useEffect(() => {
-    setThemeMode(document.body.dataset.theme);
+    setThemeMode(isBrowser ? document.body.dataset.theme : '');
 
     const observer = new MutationObserver(([record]) => {
       if (
         record.target.nodeName === 'BODY' &&
         record.attributeName === 'data-theme'
       ) {
-        setThemeMode(document.body.dataset.theme);
+        setThemeMode(isBrowser ? document.body.dataset.theme : '');
       }
     });
 

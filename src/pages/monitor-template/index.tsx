@@ -7,19 +7,21 @@ import dashboardStyles from '@/styles/dashboard.module.less';
 import '@/styles/dark.less';
 import styles from './index.module.less';
 
+const isBrowser = typeof document !== 'undefined';
+
 const SecondPage = () => {
   const [themeMode, setThemeMode] = useState<string>();
   const [json, updateJson] = useState(monitorJson);
 
   useEffect(() => {
-    setThemeMode(document.body.dataset.theme);
+    setThemeMode(isBrowser ? document.body.dataset.theme : '');
 
     const observer = new MutationObserver(([record]) => {
       if (
         record.target.nodeName === 'BODY' &&
         record.attributeName === 'data-theme'
       ) {
-        setThemeMode(document.body.dataset.theme);
+        setThemeMode(isBrowser ? document.body.dataset.theme : '');
       }
     });
 

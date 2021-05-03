@@ -10,12 +10,14 @@ type Props = {
   className?: string;
 };
 
+const isBrowser = typeof document !== 'undefined';
+
 const Header: React.FC<Props> = ({ siteTitle, githubUrl, className }) => {
   const changeTheme = (checked: boolean) => {
-    document.body.dataset['theme'] = checked ? 'dark' : 'light';
+    isBrowser ? document.body.dataset['theme'] = checked ? 'dark' : 'light' : 'light';
   };
 
-  const checked = document.body.dataset['theme'] === 'dark';
+  const checked = isBrowser ? document.body.dataset['theme'] === 'dark' : false;
 
   return (
     <header className={cx('site-header', className)}>
