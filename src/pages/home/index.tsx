@@ -1,8 +1,10 @@
 import React from 'react';
 import Layout from '@/layouts/layout';
 import { Home } from '@/components/base/home';
+import GalleryMeta from '@/examples/meta.json';
 
 export default () => {
+  const lang = 'zh';
   const dashboards = [
     {
       image:
@@ -15,7 +17,8 @@ export default () => {
     {
       image:
         'https://gw.alipayobjects.com/zos/antfincdn/n%268Jqw3vKF/1096*560_light.png',
-        darkImage: 'https://gw.alipayobjects.com/zos/antfincdn/YI%241xJfKMf/2094*560.png',
+      darkImage:
+        'https://gw.alipayobjects.com/zos/antfincdn/YI%241xJfKMf/2094*560.png',
       name: '监控场景',
       path: 'monitor-template',
     },
@@ -33,9 +36,16 @@ export default () => {
     },
   ];
 
+  const charts = GalleryMeta.demos.map((d: any) => ({
+    image: d.screenshots.default,
+    darkImage: d.screenshots.dark,
+    name: d.title[lang],
+    path: `gallery/${d.pathname}`,
+  }));
+
   return (
-    <Layout siteTitle="可视化精选集" themeSwitcher={false}>
-      <Home dashboards={dashboards} />
+    <Layout siteTitle="可视化精选集">
+      <Home dashboards={dashboards} charts={charts} />
     </Layout>
   );
 };

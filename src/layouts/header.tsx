@@ -8,11 +8,12 @@ type Props = {
   siteTitle: string;
   githubUrl: string;
   className?: string;
+  themeModeSwitcher?: boolean;
 };
 
 const isBrowser = typeof document !== 'undefined';
 
-const Header: React.FC<Props> = ({ siteTitle, githubUrl, className }) => {
+const Header: React.FC<Props> = ({ siteTitle, githubUrl, className, themeModeSwitcher }) => {
   const changeTheme = (checked: boolean) => {
     isBrowser ? document.body.dataset['theme'] = checked ? 'dark' : 'light' : 'light';
   };
@@ -27,13 +28,13 @@ const Header: React.FC<Props> = ({ siteTitle, githubUrl, className }) => {
           <h1 style={{ margin: 0 }}>{siteTitle}</h1>
         </div>
         <div className="header-actions">
-          <Switch
+          {themeModeSwitcher !== false && <Switch
             className="theme-switcher header-action"
             unCheckedChildren="日间"
             checkedChildren="夜间"
             defaultChecked={checked}
             onChange={changeTheme}
-          />
+          />}
           <Popover
             content="客人，来个 star 呗 😉"
             placement="topRight"

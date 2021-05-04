@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
+import _ from 'lodash';
 import './home.less';
 
 type Props = {
@@ -9,11 +10,17 @@ type Props = {
     path: string;
     darkImage?: string;
   }[];
+  charts?: {
+    image: string;
+    name: string;
+    path: string;
+    darkImage?: string;
+  }[];
 };
 
 const isBrowser = typeof document !== 'undefined';
 
-export const Home: React.FC<Props> = ({ dashboards }) => {
+export const Home: React.FC<Props> = ({ dashboards, charts }) => {
   const gotoDashboard = (path: string) => {
     path && navigate(`../${path}`);
   };
@@ -36,27 +43,56 @@ export const Home: React.FC<Props> = ({ dashboards }) => {
   }, []);
 
   return (
-    <div className="dashboard-container">
-      {dashboards.map(({ image, name, path, darkImage }, idx) => {
-        return (
-          <div
-            className={`dashboard-item ${!path ? 'disable' : ''}`}
-            style={{
-              backgroundImage: `url(${
-                (themeMode === 'dark' && darkImage) || image
-              })`,
-            }}
-            key={`${idx}`}
-          >
-            <span
-              className="dashboard-description"
-              onClick={() => gotoDashboard(path)}
+    <div className="home-page">
+      <div className="dashboard-container">
+        {dashboards.map(({ image, name, path, darkImage }, idx) => {
+          return (
+            <div
+              className={`dashboard-item ${!path ? 'disable' : ''}`}
+              style={{
+                backgroundImage: `url(${
+                  (themeMode === 'dark' && darkImage) || image
+                })`,
+              }}
+              key={`${idx}`}
             >
-              <span>{name}</span>
-            </span>
+              <span
+                className="dashboard-description"
+                onClick={() => gotoDashboard(path)}
+              >
+                <span>{name}</span>
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      {_.size(charts) ? (
+        <div>
+          <h2>Gallery</h2>
+          <div className="dashboard-container">
+            {charts.map(({ image, name, path, darkImage }, idx) => {
+              return (
+                <div
+                  className={`dashboard-item ${!path ? 'disable' : ''}`}
+                  style={{
+                    backgroundImage: `url(${
+                      (themeMode === 'dark' && darkImage) || image
+                    })`,
+                  }}
+                  key={`${idx}`}
+                >
+                  <span
+                    className="dashboard-description"
+                    onClick={() => gotoDashboard(path)}
+                  >
+                    <span>{name}</span>
+                  </span>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      ) : null}
     </div>
   );
 };

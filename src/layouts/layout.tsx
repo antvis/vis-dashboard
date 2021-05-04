@@ -22,6 +22,8 @@ type Props = {
   mainClassName?: string;
   /** 网站布局 · 脚部 classname */
   footerClassName?: string;
+  /** 是否开启主题模式切换 */
+  themeModeSwitcher?: boolean;
 };
 
 const Layout: React.FC<Props> = ({
@@ -31,6 +33,7 @@ const Layout: React.FC<Props> = ({
   headerClassName,
   mainClassName,
   footerClassName,
+  themeModeSwitcher,
 }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -55,6 +58,7 @@ const Layout: React.FC<Props> = ({
           siteTitle={siteTitle || title}
           githubUrl={githubUrl}
           className={headerClassName}
+          themeModeSwitcher={themeModeSwitcher}
         />
       )}
       <main className={cx(mainClassName)}>{children}</main>

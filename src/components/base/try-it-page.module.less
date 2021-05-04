@@ -1,0 +1,19 @@
+@header-height: 56px;
+@footer-height: 52px;
+.try-it-page {
+  height: calc(100vh - @header-height);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .playground-result-wrapper {
+    background: #fff;
+    border-right: 0.5px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+      margin: 12px auto;
+    }
+  }
+}
