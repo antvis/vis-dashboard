@@ -15,7 +15,8 @@ export default () => {
     {
       image:
         'https://gw.alipayobjects.com/zos/antfincdn/n%268Jqw3vKF/1096*560_light.png',
-        darkImage: 'https://gw.alipayobjects.com/zos/antfincdn/YI%241xJfKMf/2094*560.png',
+      darkImage:
+        'https://gw.alipayobjects.com/zos/antfincdn/YI%241xJfKMf/2094*560.png',
       name: '监控场景',
       path: 'monitor-template',
     },
@@ -33,9 +34,20 @@ export default () => {
     },
   ];
 
+  const charts = [
+    {
+      image:
+        'https://gw.alipayobjects.com/zos/antfincdn/BmAsUWBHJb/waffle.png',
+      darkImage:
+        'https://gw.alipayobjects.com/zos/antfincdn/BmAsUWBHJb/waffle.png',
+      name: '尝试一下',
+      path: 'gallery',
+    },
+  ];
+
   return (
-    <Layout siteTitle="可视化精选集" themeSwitcher={false}>
-      <Home dashboards={dashboards} />
+    <Layout siteTitle="可视化精选集">
+      <Home dashboards={dashboards} charts={charts} />
     </Layout>
   );
 };

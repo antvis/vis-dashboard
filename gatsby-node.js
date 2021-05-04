@@ -1,4 +1,5 @@
 const path = require('path');
+const MonacoWebpackPlugin = require(`monaco-editor-webpack-plugin`);
 
 exports.onCreateWebpackConfig = ({ actions, loaders, stage, getConfig }) => {
   const config = getConfig();
@@ -13,6 +14,15 @@ exports.onCreateWebpackConfig = ({ actions, loaders, stage, getConfig }) => {
       alias: { '@': path.resolve(__dirname, 'src') },
     };
   }
+
+  if (!config.plugins) {
+    config.plugins = [];
+  }
+  config.plugins.push(
+    new MonacoWebpackPlugin({
+      languages: ['javascript', 'json', 'typescript', 'html'],
+    })
+  );
 
   // This will completely replace the webpack config with the modified object.
   actions.replaceWebpackConfig(config);
