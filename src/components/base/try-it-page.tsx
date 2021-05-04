@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import { transform } from '@babel/standalone';
 import { bind } from 'size-sensor';
+import { Result } from 'antd';
 import _ from 'lodash';
 import styles from './try-it-page.module.less';
 
@@ -17,6 +18,13 @@ const TryItPage = ({ source }: Props) => {
   const [currentSourceCode, updateCurrentSourceCode] = useState('');
   const [compiledCode, updateCompiledCode] = useState();
   const [error, setError] = useState(null);
+
+  if (typeof window !== 'undefined') {
+    (window as any).__reportErrorInPlayGround = (e: Error) => {
+      console.error('report error:', e); // eslint-disable-line no-console
+      setError(e);
+    };
+  }
 
   /**
    * 绑定 resize 监听
@@ -50,7 +58,7 @@ const TryItPage = ({ source }: Props) => {
       });
       updateCompiledCode(code);
     } catch (e) {
-      console.error(e); // eslint-disable-line no-console
+      console.error('e', e); // eslint-disable-line no-console
       setError(e);
       return;
     }
@@ -102,11 +110,15 @@ const TryItPage = ({ source }: Props) => {
 
   return (
     <div className={styles.tryItPage} ref={containerNode}>
-      <div
-        ref={playgroundNode}
-        className={styles.playgroundResultWrapper}
-        style={{ height: `${height}px` }}
-      />
+      {error ? (
+        <Result status="error" title="There are some errors of code." />
+      ) : (
+        <div
+          ref={playgroundNode}
+          className={styles.playgroundResultWrapper}
+          style={{ height: `${height}px` }}
+        />
+      )}
       <MonacoEditor
         language="javascript"
         theme="vs"
