@@ -16,7 +16,7 @@ export default function Example({
   const { source } = pageContext;
 
   return (
-    <Layout siteTitle="Gallery" footerClassName={styles.footer}>
+    <Layout siteTitle="Gallery" footerClassName={styles.footer} themeModeSwitcher={false}>
       <TryItPage source={source}/>
     </Layout>
   );
