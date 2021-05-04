@@ -1,8 +1,10 @@
 import React from 'react';
 import Layout from '@/layouts/layout';
 import { Home } from '@/components/base/home';
+import GalleryMeta from '@/examples/meta.json';
 
 export default () => {
+  const lang = 'zh';
   const dashboards = [
     {
       image:
@@ -34,16 +36,12 @@ export default () => {
     },
   ];
 
-  const charts = [
-    {
-      image:
-        'https://gw.alipayobjects.com/zos/antfincdn/BmAsUWBHJb/waffle.png',
-      darkImage:
-        'https://gw.alipayobjects.com/zos/antfincdn/BmAsUWBHJb/waffle.png',
-      name: '尝试一下',
-      path: 'gallery',
-    },
-  ];
+  const charts = GalleryMeta.demos.map((d: any) => ({
+    image: d.screenshots.default,
+    darkImage: d.screenshots.dark,
+    name: d.title[lang],
+    path: `gallery/${d.pathname}`,
+  }));
 
   return (
     <Layout siteTitle="可视化精选集">

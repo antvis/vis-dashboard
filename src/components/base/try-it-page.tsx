@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import { transform } from '@babel/standalone';
-import _ from 'lodash';
 import { bind } from 'size-sensor';
+import _ from 'lodash';
 import styles from './try-it-page.module.less';
 
-const TryItPage = () => {
+type Props = {
+  /** 源代码 */
+  source?: string;
+};
+
+const TryItPage = ({ source }: Props) => {
   const containerNode = useRef<HTMLDivElement>();
   const playgroundNode = useRef<HTMLDivElement>();
   const [height, setHeight] = useState<number>();
@@ -13,13 +18,15 @@ const TryItPage = () => {
   const [compiledCode, updateCompiledCode] = useState();
   const [error, setError] = useState(null);
 
+  /**
+   * 绑定 resize 监听
+   */
   useEffect(() => {
     const container = containerNode.current;
     let unbind;
     if (container) {
       unbind = bind(container, () => {
         setHeight(containerNode?.current?.getBoundingClientRect().height);
-        console.log('resize');
       });
     }
     return () => {
@@ -27,40 +34,12 @@ const TryItPage = () => {
     };
   }, [containerNode]);
 
-  /** 初始化 mounted */
+  /**
+   * 绑定内容更新
+   */
   useEffect(() => {
-    updateCurrentSourceCode(`import { Line } from '@antv/g2plot';
-
-    function getData() {
-      // generate an array of random data
-      const data = [];
-      const time = new Date().getTime();
-    
-      for (let i = -19; i <= 0; i += 1) {
-        data.push({
-          x: time + i * 1000,
-          y: Math.random() + 0.2,
-        });
-      }
-      return data;
-    }
-    
-    const line = new Line('container', {
-      data: getData(),
-      padding: 'auto',
-      xField: 'x',
-      yField: 'y',
-      xAxis: {
-        type: 'time',
-        mask: 'HH:MM:ss',
-      },
-      smooth: true,
-      point: {},
-    });
-    
-    line.render();
-    `);
-  }, []);
+    updateCurrentSourceCode(source);
+  }, [source]);
 
   useEffect(() => {
     try {
@@ -79,14 +58,14 @@ const TryItPage = () => {
   }, [currentSourceCode]);
 
   const execute = _.debounce((code: string, node: HTMLDivElement) => {
+    // 先清空
     node.innerHTML = '';
+
     const div = document.createElement('div');
-    div.id = 'container';
-    div.style.width = '90%';
-    div.style.height = '90%';
+    div.setAttribute('id', 'container');
+    div.setAttribute('style', 'width:90%;height:90%;');
     node!.appendChild(div);
     const script = document.createElement('script') as HTMLScriptElement;
-    script.id = 'custom-script';
     script.innerHTML = `
         try {
           ${code}

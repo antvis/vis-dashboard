@@ -43,50 +43,54 @@ export const Home: React.FC<Props> = ({ dashboards, charts }) => {
   }, []);
 
   return (
-    <div className="dashboard-container">
-      {dashboards.map(({ image, name, path, darkImage }, idx) => {
-        return (
-          <div
-            className={`dashboard-item ${!path ? 'disable' : ''}`}
-            style={{
-              backgroundImage: `url(${
-                (themeMode === 'dark' && darkImage) || image
-              })`,
-            }}
-            key={`${idx}`}
-          >
-            <span
-              className="dashboard-description"
-              onClick={() => gotoDashboard(path)}
+    <div className="home-page">
+      <div className="dashboard-container">
+        {dashboards.map(({ image, name, path, darkImage }, idx) => {
+          return (
+            <div
+              className={`dashboard-item ${!path ? 'disable' : ''}`}
+              style={{
+                backgroundImage: `url(${
+                  (themeMode === 'dark' && darkImage) || image
+                })`,
+              }}
+              key={`${idx}`}
             >
-              <span>{name}</span>
-            </span>
-          </div>
-        );
-      })}
+              <span
+                className="dashboard-description"
+                onClick={() => gotoDashboard(path)}
+              >
+                <span>{name}</span>
+              </span>
+            </div>
+          );
+        })}
+      </div>
       {_.size(charts) ? (
         <div>
-          <h3>Gallery</h3>
-          {charts.map(({ image, name, path, darkImage }, idx) => {
-            return (
-              <div
-                className={`dashboard-item ${!path ? 'disable' : ''}`}
-                style={{
-                  backgroundImage: `url(${
-                    (themeMode === 'dark' && darkImage) || image
-                  })`,
-                }}
-                key={`${idx}`}
-              >
-                <span
-                  className="dashboard-description"
-                  onClick={() => gotoDashboard(path)}
+          <h2>Gallery</h2>
+          <div className="dashboard-container">
+            {charts.map(({ image, name, path, darkImage }, idx) => {
+              return (
+                <div
+                  className={`dashboard-item ${!path ? 'disable' : ''}`}
+                  style={{
+                    backgroundImage: `url(${
+                      (themeMode === 'dark' && darkImage) || image
+                    })`,
+                  }}
+                  key={`${idx}`}
                 >
-                  <span>{name}</span>
-                </span>
-              </div>
-            );
-          })}
+                  <span
+                    className="dashboard-description"
+                    onClick={() => gotoDashboard(path)}
+                  >
+                    <span>{name}</span>
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       ) : null}
     </div>

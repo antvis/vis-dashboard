@@ -1,0 +1,28 @@
+{
+  "demos": [
+    {
+      "filename": "emoji-waffle.ts",
+      "pathname": "emoji-waffle",
+      "title": {
+        "zh": "Emoji 华夫饼图",
+        "en": "Emoji waffle"
+      },
+      "screenshots": {
+        "default": "https://gw.alipayobjects.com/zos/antfincdn/NtWKQKoKhL/1094*560_emoji.png",
+        "dark": "https://gw.alipayobjects.com/zos/antfincdn/5FtDDRwCUD/1094*560_emoji_dark.png"
+      }
+    },
+    {
+      "filename": "waffle.ts",
+      "pathname": "waffle",
+      "title": {
+        "zh": "华夫饼图",
+        "en": "Waffle plot"
+      },
+      "screenshots": {
+        "default": "https://gw.alipayobjects.com/zos/antfincdn/SjVzphtAzP/1094*560_waffle_light.png",
+        "dark": "https://gw.alipayobjects.com/zos/antfincdn/ZfXL7lMdjc/1094*560_waffle.png"
+      }
+    }
+  ]
+}
