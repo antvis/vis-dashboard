@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import MonacoEditor from 'react-monaco-editor';
+// gatsby ssr not support Suspense&lazy https://github.com/gatsbyjs/gatsby/issues/11960
+import loadable from '@loadable/component';
 import { transform } from '@babel/standalone';
 import { bind } from 'size-sensor';
 import { Result } from 'antd';
 import _ from 'lodash';
 import styles from './try-it-page.module.less';
+
+const MonacoEditor = loadable(() => import('react-monaco-editor'));
 
 type Props = {
   /** 源代码 */
