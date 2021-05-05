@@ -1,3 +1,31 @@
+const fs = require('fs');
+const path = require('path');
+const { Extractor, ExtractorConfig } = require('@microsoft/api-extractor');
+
+const getExtraLib = name => {
+  try {
+    const extractorConfig = ExtractorConfig.loadFileAndPrepare(
+      path.resolve('./api-extractor.json')
+    );
+    const extractorResult = Extractor.invoke(extractorConfig, {
+      localBuild: true,
+      showVerboseMessages: true,
+    });
+    if (extractorResult.succeeded) {
+      const typeFilePath = extractorResult.extractorConfig.untrimmedFilePath;
+      if (typeFilePath) {
+        return `declare module '${name}'{
+          ${fs.readFileSync(typeFilePath, `utf8`)}
+        }`;
+      }
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(`api-extractor warn: ${e.message}`);
+  }
+  return '';
+};
+
 module.exports = {
   pathPrefix: '/vis-dashboard',
   siteMetadata: {
@@ -5,6 +33,7 @@ module.exports = {
     githubUrl: 'https://github.com/antvis/vis-dashboard',
     author: 'visiky',
     contact: 'https://github.com/visiky',
+    extraLib: getExtraLib('@antv/g2plot'),
   },
   plugins: [
     {
@@ -25,11 +54,12 @@ module.exports = {
       resolve: 'gatsby-plugin-less',
       options: {
         strictMath: true,
+        // https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-less#v400
         lessOptions: {
           javascriptEnabled: true,
           modifyVars: {
-            'primary-color': '#873bf4',
-            'font-family': 'Arial',
+            '@primary-color': '#873bf4',
+            '@font-family': 'Arial',
           },
         },
       },
@@ -45,7 +75,7 @@ module.exports = {
         icon: require.resolve(`./src/static/images/favicon.png`), // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // this (optional) plugin enables Progressive Web App Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ]

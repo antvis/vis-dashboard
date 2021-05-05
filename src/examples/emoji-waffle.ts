@@ -126,7 +126,7 @@ fetch('https://gw.alipayobjects.com/os/antfincdn/RREr%24bnyJf/emoji-data.json')
             return text;
           },
           style: {
-            fill: 'rgba(255,255,255,0.65)',
+            fill: 'rgba(0,0,0,0.65)',
           },
         },
         // @ts-ignore

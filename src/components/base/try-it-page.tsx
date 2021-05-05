@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 // gatsby ssr not support Suspense&lazy https://github.com/gatsbyjs/gatsby/issues/11960
 import loadable from '@loadable/component';
 import { transform } from '@babel/standalone';
@@ -15,6 +16,20 @@ type Props = {
 };
 
 const TryItPage = ({ source }: Props) => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            extraLib
+          }
+        }
+      }
+    `
+  );
+
+  const { extraLib = '' } = site.siteMetadata;
+
   const containerNode = useRef<HTMLDivElement>();
   const playgroundNode = useRef<HTMLDivElement>();
   const [height, setHeight] = useState<number>();
@@ -129,6 +144,12 @@ const TryItPage = ({ source }: Props) => {
         options={options}
         onChange={value => updateCurrentSourceCode(value)}
         height={height}
+        editorWillMount={monaco => {
+          monaco.languages.typescript.javascriptDefaults.addExtraLib(
+            extraLib,
+            ''
+          );
+        }}
       />
     </div>
   );
