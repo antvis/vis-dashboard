@@ -7,7 +7,7 @@
 
   .playground-result-wrapper {
     background: #fff;
-    border-right: 0.5px solid rgba(0,0,0,0.05);
+    border-right: 0.5px solid rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,5 +15,34 @@
     > div {
       margin: 12px auto;
     }
+  }
+
+  :global {
+    .react-monaco-editor-container {
+      position: relative;
+    }
+    // 用于滚动
+    .react-monaco-editor-container::after {
+      content: ' ';
+      width: 56px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  @playground-result-height: 400px;
+  .try-it-page {
+    width: 100%;
+    min-height: @playground-result-height;
+    height: calc(50vh - @header-height / 2);
+    grid-template-columns: 1fr;
+  }
+  .playground-result-wrapper {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-right: none;
   }
 }
