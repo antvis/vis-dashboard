@@ -33,7 +33,7 @@ export const XRingProgress: React.FC<XPlotProps> = props => {
   return (
     <div data-type="ring-progress" className="full x-plot" style={style || {}}>
       <Header {...props} />
-      <div className="plot-container">
+      <div className="plot-container ring-plot-container">
         {measures.map((measure, idx) => {
           const dataValue = _.get(data, ['0', measure]);
           const dataSvg = _.get(meta, [measure, 'icon']);
@@ -74,11 +74,7 @@ export const XRingProgress: React.FC<XPlotProps> = props => {
             animation: false as const,
           };
           return (
-            <div
-              key={`${idx}`}
-              className="ring-progress-container"
-              style={{ width: `${(1 / measures.length) * 100}%` }}
-            >
+            <div key={`${idx}`} className="ring-progress-container">
               <UseG2Plot<RingProgressOptions>
                 Ctor={RingProgress}
                 options={config}

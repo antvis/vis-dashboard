@@ -1,11 +1,11 @@
-.plot-container {
-  display: flex;
+.ring-plot-container.plot-container {
+  display: grid;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 120px;
 
   .ring-progress-container {
-    flex: 1;
     height: 100%;
 
     .statistic-icon-container {
@@ -20,6 +20,12 @@
   }
 }
 
+@media (max-width: 680px) {
+  .ring-plot-container.plot-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 120px 120px;
+  }
+}
 
 // 对应暗黑主题
 body[data-theme='dark'] {

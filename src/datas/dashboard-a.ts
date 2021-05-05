@@ -16,7 +16,7 @@ const GAUGE_1 = {
   statistic: {
     title: {
       formatter: () => '目标完成度',
-      offsetY: 12,
+      offsetY: 24,
       style: {
         color: '#000',
         opacity: 0.65,
@@ -73,6 +73,20 @@ export const reportJSON = {
         { i: 'j', x: 0, y: 62, w: 12, h: 11 },
         { i: 'k', x: 6, y: 73, w: 6, h: 14 },
         { i: 'l', x: 0, y: 35, w: 6, h: 14 },
+      ],
+      xxs: [
+        { x: 0, y: 0, i: 'a', w: 4, h: 16 },
+        { x: 0, y: 16, i: 'b', w: 4, h: 13 },
+        { x: 0, y: 47, i: 'c', w: 4, h: 13 },
+        { x: 0, y: 60, i: 'd', w: 4, h: 13 },
+        { x: 0, y: 29, i: 'e', w: 4, h: 9 },
+        { x: 0, y: 38, i: 'f', w: 4, h: 9 },
+        { x: 0, y: 73, i: 'g', w: 4, h: 14 },
+        { x: 0, y: 125, i: 'h', w: 4, h: 14 },
+        { x: 0, y: 101, i: 'i', w: 4, h: 13 },
+        { x: 0, y: 114, i: 'j', w: 4, h: 11 },
+        { x: 0, y: 139, i: 'k', w: 4, h: 14 },
+        { x: 0, y: 87, i: 'l', w: 4, h: 14 },
       ],
     },
   },

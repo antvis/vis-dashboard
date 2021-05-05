@@ -18,7 +18,9 @@ export const XPanel: React.FC<XProps> = ({ attributes, children }) => {
     setLayout(attributes.layout);
   }, [attributes.layout]);
 
-  const onLayoutChange = () => { };
+  const onLayoutChange = (...args) => {
+    console.log(...args);
+  };
 
   if (_.isEmpty(layout)) {
     return <PageLoading />;
