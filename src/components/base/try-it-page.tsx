@@ -89,7 +89,7 @@ const TryItPage = ({ source }: Props) => {
 
     const div = document.createElement('div');
     div.setAttribute('id', 'container');
-    div.setAttribute('style', 'width:90%;height:90%;');
+    div.setAttribute('style', 'width:100%;height:100%;');
     node!.appendChild(div);
     const script = document.createElement('script') as HTMLScriptElement;
     script.innerHTML = `
