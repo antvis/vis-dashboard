@@ -3,6 +3,7 @@
     {
       "filename": "emoji-waffle.ts",
       "pathname": "emoji-waffle",
+      "tag": ["G2Plot"],
       "title": {
         "zh": "Emoji 华夫饼图",
         "en": "Emoji waffle"
@@ -15,6 +16,7 @@
     {
       "filename": "waffle.ts",
       "pathname": "waffle",
+      "tag": ["G2Plot"],
       "title": {
         "zh": "华夫饼图",
         "en": "Waffle plot"

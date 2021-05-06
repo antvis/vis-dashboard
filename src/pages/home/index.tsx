@@ -41,6 +41,7 @@ export default () => {
     darkImage: d.screenshots.dark,
     name: d.title[lang],
     path: `gallery/${d.pathname}`,
+    tag: d.tag,
   }));
 
   return (

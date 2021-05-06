@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Badge } from 'antd';
 import { navigate } from 'gatsby';
 import _ from 'lodash';
 import './home.less';
@@ -15,6 +16,7 @@ type Props = {
     name: string;
     path: string;
     darkImage?: string;
+    tag?: string[];
   }[];
 };
 
@@ -70,24 +72,26 @@ export const Home: React.FC<Props> = ({ dashboards, charts }) => {
         <div>
           <h2>Gallery</h2>
           <div className="dashboard-container">
-            {charts.map(({ image, name, path, darkImage }, idx) => {
+            {charts.map(({ image, name, path, darkImage, tag }, idx) => {
               return (
-                <div
-                  className={`dashboard-item ${!path ? 'disable' : ''}`}
-                  style={{
-                    backgroundImage: `url(${
-                      (themeMode === 'dark' && darkImage) || image
-                    })`,
-                  }}
-                  key={`${idx}`}
-                >
-                  <span
-                    className="dashboard-description"
-                    onClick={() => gotoDashboard(path)}
+                <Badge.Ribbon text={_.join(tag, '，') || 'Other'}>
+                  <div
+                    className={`dashboard-item ${!path ? 'disable' : ''}`}
+                    style={{
+                      backgroundImage: `url(${
+                        (themeMode === 'dark' && darkImage) || image
+                      })`,
+                    }}
+                    key={`${idx}`}
                   >
-                    <span>{name}</span>
-                  </span>
-                </div>
+                    <span
+                      className="dashboard-description"
+                      onClick={() => gotoDashboard(path)}
+                    >
+                      <span>{name}</span>
+                    </span>
+                  </div>
+                </Badge.Ribbon>
               );
             })}
           </div>
