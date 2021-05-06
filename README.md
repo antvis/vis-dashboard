@@ -13,7 +13,7 @@ Vis Dashboard 收集了一些基于 G2、G2Plot 构建的 dashboard 可视化精
 ![Latest commit](https://badgen.net/github/last-commit/antvis/G2Plot)
 [![build Status](https://github.com/antvis/G2Plot/workflows/build/badge.svg?branch=master)](https://github.com/antvis/G2Plot/actions?query=workflow%3Abuild)
 
-## ⌨️ 参与贡献
+## ⌨️ 本地开发
 
 ```bash
 # 克隆仓库
@@ -29,6 +29,15 @@ npm install && npm start
 
 # 🏄 contribute your dashboard as what do in [dashboard-a](./src/pages/dashboard-a)
 ```
+
+## 👏 参与贡献
+
+如何贡献 Examples 呢？可以参照 [贡献 pizza plot](https://github.com/antvis/vis-dashboard/pull/18)，你需要做以下 2 件事情：
+
+> fork 仓库，提交 pull request
+
+1. `examples` 目录下，新增您的 example 文件
+2. `examples/meta.json` 补全 example 的元信息，含示例截图 & 使用的技术栈（使用 tag 标识，G2Plot 或 G2）
 
 ## 📧 联系我们
 
