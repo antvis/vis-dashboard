@@ -23,6 +23,19 @@
         "default": "https://gw.alipayobjects.com/zos/antfincdn/SjVzphtAzP/1094*560_waffle_light.png",
         "dark": "https://gw.alipayobjects.com/zos/antfincdn/ZfXL7lMdjc/1094*560_waffle.png"
       }
+    },
+    {
+      "filename": "pizza.ts",
+      "pathname": "pizza",
+      "tag": ["G2"],
+      "title": {
+        "zh": "披萨图",
+        "en": "Pizza plot"
+      },
+      "screenshots": {
+        "default": "https://gw.alipayobjects.com/zos/antfincdn/XkR%24pj1Uwm/pizza-image.png",
+        "dark": "https://gw.alipayobjects.com/zos/antfincdn/XkR%24pj1Uwm/pizza-image.png"
+      }
     }
   ]
 }
