@@ -45,9 +45,16 @@ export default () => {
     path: `gallery/${d.pathname}`,
   }));
 
+  /** 三方图表 */
+  const thirdPartyCharts = [{ name: 'Infographic for AntV * D2', image: 'https://gw.alipayobjects.com/zos/antfincdn/7dd0yeVnOZ/d2.png', url: 'https://visiky.github.io/d2-infographic', badge: 'G2Plot' }];
+
   return (
     <Layout siteTitle="可视化精选集">
-      <Home dashboards={dashboards} charts={charts} />
+      <Home
+        dashboards={dashboards}
+        charts={charts}
+        thirdPartyCharts={thirdPartyCharts}
+      />
     </Layout>
   );
 };

@@ -18,13 +18,29 @@ type Props = {
     darkImage?: string;
     badge?: string;
   }[];
+  thirdPartyCharts?: {
+    image: string;
+    name: string;
+    url: string;
+    badge?: string;
+  }[];
 };
 
 const isBrowser = typeof document !== 'undefined';
 
-export const Home: React.FC<Props> = ({ dashboards, charts }) => {
+export const Home: React.FC<Props> = ({
+  dashboards,
+  charts,
+  thirdPartyCharts,
+}) => {
   const gotoDashboard = (path: string) => {
     path && navigate(`../${path}`);
+  };
+
+  const openUrl = (url: string) => {
+    if (typeof window !== 'undefined') {
+      window.open(url);
+    }
   };
 
   const [themeMode, setThemeMode] = useState<string>();
@@ -87,6 +103,33 @@ export const Home: React.FC<Props> = ({ dashboards, charts }) => {
                     <span
                       className="dashboard-description"
                       onClick={() => gotoDashboard(path)}
+                    >
+                      <span>{name}</span>
+                    </span>
+                  </div>
+                </Badge.Ribbon>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+      {_.size(thirdPartyCharts) ? (
+        <div>
+          <h2>Third party charts</h2>
+          <div className="dashboard-container">
+            {thirdPartyCharts.map(({ image, name, url, badge }, idx) => {
+              return (
+                <Badge.Ribbon text={badge || 'Other'}>
+                  <div
+                    className={`dashboard-item`}
+                    style={{
+                      backgroundImage: `url(${image})`,
+                    }}
+                    key={`${idx}`}
+                  >
+                    <span
+                      className="dashboard-description"
+                      onClick={() => openUrl(url)}
                     >
                       <span>{name}</span>
                     </span>
