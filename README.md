@@ -37,7 +37,7 @@ npm install && npm start
 > fork 仓库，提交 pull request
 
 1. `examples` 目录下，新增您的 example 文件
-2. `examples/meta.json` 补全 example 的元信息，含示例截图 & 使用的技术栈（使用 tag 标识，G2Plot 或 G2）
+2. `examples/meta.json` 补全 example 的元信息，含示例截图 & 使用的技术栈（使用 badge 标识，G2Plot 或 G2）
 
 ## 📧 联系我们
 

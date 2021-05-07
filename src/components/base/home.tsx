@@ -16,7 +16,7 @@ type Props = {
     name: string;
     path: string;
     darkImage?: string;
-    tag?: string[];
+    badge?: string;
   }[];
 };
 
@@ -72,9 +72,9 @@ export const Home: React.FC<Props> = ({ dashboards, charts }) => {
         <div>
           <h2>Gallery</h2>
           <div className="dashboard-container">
-            {charts.map(({ image, name, path, darkImage, tag }, idx) => {
+            {charts.map(({ image, name, path, darkImage, badge }, idx) => {
               return (
-                <Badge.Ribbon text={_.join(tag, '，') || 'Other'}>
+                <Badge.Ribbon text={badge || 'Other'}>
                   <div
                     className={`dashboard-item ${!path ? 'disable' : ''}`}
                     style={{

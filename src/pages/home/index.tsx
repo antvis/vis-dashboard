@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import Layout from '@/layouts/layout';
 import { Home } from '@/components/base/home';
 import GalleryMeta from '@/examples/meta.json';
@@ -37,11 +38,11 @@ export default () => {
   ];
 
   const charts = GalleryMeta.demos.map((d: any) => ({
+    ..._.omit(d, ['screenshots', 'title', 'pathname']),
     image: d.screenshots.default,
     darkImage: d.screenshots.dark,
     name: d.title[lang],
     path: `gallery/${d.pathname}`,
-    tag: d.tag,
   }));
 
   return (

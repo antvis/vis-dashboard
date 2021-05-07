@@ -3,7 +3,7 @@
     {
       "filename": "emoji-waffle.ts",
       "pathname": "emoji-waffle",
-      "tag": ["G2Plot"],
+      "badge": "G2Plot",
       "title": {
         "zh": "Emoji 华夫饼图",
         "en": "Emoji waffle"
@@ -16,7 +16,7 @@
     {
       "filename": "waffle.ts",
       "pathname": "waffle",
-      "tag": ["G2Plot"],
+      "badge": "G2Plot",
       "title": {
         "zh": "华夫饼图",
         "en": "Waffle plot"
@@ -27,9 +27,23 @@
       }
     },
     {
+      "filename": "html-tooltip.ts",
+      "pathname": "html-tooltip",
+      "badge": "G2Plot",
+      "tag": ["tooltip"],
+      "title": {
+        "zh": "自定义 html Tooltip",
+        "en": "Customize html tooltip"
+      },
+      "screenshots": {
+        "default": "https://gw.alipayobjects.com/zos/antfincdn/QyLwg8GGZl/36da41bf-f6b6-4521-803f-5aee9d0da3a9.png",
+        "dark": "https://gw.alipayobjects.com/zos/antfincdn/QyLwg8GGZl/36da41bf-f6b6-4521-803f-5aee9d0da3a9.png"
+      }
+    },
+    {
       "filename": "pizza.ts",
       "pathname": "pizza",
-      "tag": ["G2"],
+      "badge": "G2",
       "title": {
         "zh": "披萨图",
         "en": "Pizza plot"
