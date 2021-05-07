@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cx from 'classnames';
 import Layout from '@/layouts/layout';
 import { parse } from '@/components/x-plot/common/parse';
-import { monitorJson } from '@/datas/monitor-template';
+import { monitorJson } from '@/dashboards/monitor-template';
 import dashboardStyles from '@/styles/dashboard.module.less';
 import '@/styles/dark.less';
 import styles from './index.module.less';
