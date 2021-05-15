@@ -30,7 +30,9 @@
       "filename": "html-tooltip.ts",
       "pathname": "html-tooltip",
       "badge": "G2Plot",
-      "tag": ["tooltip"],
+      "tag": [
+        "tooltip"
+      ],
       "title": {
         "zh": "自定义 html Tooltip",
         "en": "Customize html tooltip"
@@ -52,6 +54,20 @@
         "default": "https://gw.alipayobjects.com/zos/antfincdn/XkR%24pj1Uwm/pizza-image.png",
         "dark": "https://gw.alipayobjects.com/zos/antfincdn/XkR%24pj1Uwm/pizza-image.png"
       }
+    }
+  ],
+  "third": [
+    {
+      "name": "Infographic for AntV * D2",
+      "image": "https://gw.alipayobjects.com/zos/antfincdn/7dd0yeVnOZ/d2.png",
+      "url": "https://visiky.github.io/d2-infographic",
+      "badge": "G2Plot"
+    },
+    {
+      "name": "Statistical Process Control Chart",
+      "image": "https://mds-1303228113.cos.ap-chongqing.myqcloud.com/imgs/20210515123655.png",
+      "url": "https://spc-rho.vercel.app",
+      "badge": "BizCharts" 
     }
   ]
 }
