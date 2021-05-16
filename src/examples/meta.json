@@ -66,7 +66,7 @@
     {
       "name": "Statistical Process Control Chart",
       "image": "https://mds-1303228113.cos.ap-chongqing.myqcloud.com/imgs/20210515123655.png",
-      "url": "https://spc-rho.vercel.app",
+      "url": "https://spc-dangojs.vercel.app",
       "badge": "BizCharts" 
     }
   ]
