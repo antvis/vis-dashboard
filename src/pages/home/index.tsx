@@ -46,7 +46,7 @@ export default () => {
   }));
 
   /** 三方图表 */
-  const thirdPartyCharts = [{ name: 'Infographic for AntV * D2', image: 'https://gw.alipayobjects.com/zos/antfincdn/7dd0yeVnOZ/d2.png', url: 'https://visiky.github.io/d2-infographic', badge: 'G2Plot' }];
+  const thirdPartyCharts = [...GalleryMeta.third];
 
   return (
     <Layout siteTitle="可视化精选集">
