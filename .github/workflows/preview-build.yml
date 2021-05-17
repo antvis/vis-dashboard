@@ -16,7 +16,7 @@ jobs:
       - name: build
         run: |
           yarn
-          yarn run build
+          NODE_OPTIONS='--max-old-space-size=4096' yarn run build
 
       - name: upload dist artifact
         uses: actions/upload-artifact@v2
