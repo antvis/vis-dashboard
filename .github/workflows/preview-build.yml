@@ -22,6 +22,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dist
+          path: /public/
           retention-days: 5
 
       - name: Save PR number
