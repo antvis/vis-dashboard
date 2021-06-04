@@ -73,11 +73,9 @@ export const Home: React.FC<Props> = ({
                 })`,
               }}
               key={`${idx}`}
+              onClick={() => gotoDashboard(path)}
             >
-              <span
-                className="dashboard-description"
-                onClick={() => gotoDashboard(path)}
-              >
+              <span className="dashboard-description">
                 <span>{name}</span>
               </span>
             </div>
@@ -99,11 +97,9 @@ export const Home: React.FC<Props> = ({
                       })`,
                     }}
                     key={`${idx}`}
+                    onClick={() => gotoDashboard(path)}
                   >
-                    <span
-                      className="dashboard-description"
-                      onClick={() => gotoDashboard(path)}
-                    >
+                    <span className="dashboard-description">
                       <span>{name}</span>
                     </span>
                   </div>
@@ -126,11 +122,9 @@ export const Home: React.FC<Props> = ({
                       backgroundImage: `url(${image})`,
                     }}
                     key={`${idx}`}
+                    onClick={() => openUrl(url)}
                   >
-                    <span
-                      className="dashboard-description"
-                      onClick={() => openUrl(url)}
-                    >
+                    <span className="dashboard-description">
                       <span>{name}</span>
                     </span>
                   </div>
