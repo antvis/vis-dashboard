@@ -11,7 +11,9 @@
       "screenshots": {
         "default": "https://gw.alipayobjects.com/zos/antfincdn/NtWKQKoKhL/1094*560_emoji.png",
         "dark": "https://gw.alipayobjects.com/zos/antfincdn/5FtDDRwCUD/1094*560_emoji_dark.png"
-      }
+      },
+      "author": "visiky",
+      "contact": "https://github.com/visiky"
     },
     {
       "filename": "waffle.ts",
@@ -24,7 +26,9 @@
       "screenshots": {
         "default": "https://gw.alipayobjects.com/zos/antfincdn/SjVzphtAzP/1094*560_waffle_light.png",
         "dark": "https://gw.alipayobjects.com/zos/antfincdn/ZfXL7lMdjc/1094*560_waffle.png"
-      }
+      },
+      "author": "visiky",
+      "contact": "https://github.com/visiky"
     },
     {
       "filename": "html-tooltip.ts",
@@ -40,7 +44,9 @@
       "screenshots": {
         "default": "https://gw.alipayobjects.com/zos/antfincdn/QyLwg8GGZl/36da41bf-f6b6-4521-803f-5aee9d0da3a9.png",
         "dark": "https://gw.alipayobjects.com/zos/antfincdn/QyLwg8GGZl/36da41bf-f6b6-4521-803f-5aee9d0da3a9.png"
-      }
+      },
+      "author": "visiky",
+      "contact": "https://github.com/visiky"
     },
     {
       "filename": "pizza.ts",
@@ -53,7 +59,9 @@
       "screenshots": {
         "default": "https://gw.alipayobjects.com/zos/antfincdn/XkR%24pj1Uwm/pizza-image.png",
         "dark": "https://gw.alipayobjects.com/zos/antfincdn/XkR%24pj1Uwm/pizza-image.png"
-      }
+      },
+      "author": "visiky",
+      "contact": "https://github.com/visiky"
     }
   ],
   "third": [
@@ -61,13 +69,17 @@
       "name": "Infographic for AntV * D2",
       "image": "https://gw.alipayobjects.com/zos/antfincdn/7dd0yeVnOZ/d2.png",
       "url": "https://visiky.github.io/d2-infographic",
-      "badge": "G2Plot"
+      "badge": "G2Plot",
+      "author": "visiky",
+      "contact": "https://github.com/visiky"
     },
     {
       "name": "Statistical Process Control Chart",
       "image": "https://mds-1303228113.cos.ap-chongqing.myqcloud.com/imgs/20210515123655.png",
       "url": "https://spc-dangojs.vercel.app",
-      "badge": "BizCharts" 
+      "badge": "BizCharts" ,
+      "author": "Jared Wang",
+      "contact": "https://github.com/joriewong"
     }
   ]
 }
