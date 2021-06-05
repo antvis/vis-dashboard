@@ -31,8 +31,8 @@ module.exports = {
   siteMetadata: {
     title: '👋 Vis Dashboard | AntV',
     githubUrl: 'https://github.com/antvis/vis-dashboard',
-    author: 'visiky',
-    contact: 'https://github.com/visiky',
+    author: 'AntV',
+    contact: 'https://github.com/antvis',
     extraLib: getExtraLib('@antv/g2plot'),
   },
   plugins: [

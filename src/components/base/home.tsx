@@ -17,12 +17,16 @@ type Props = {
     path: string;
     darkImage?: string;
     badge?: string;
+    author?: string;
+    contact?: string;
   }[];
   thirdPartyCharts?: {
     image: string;
     name: string;
     url: string;
     badge?: string;
+    author?: string;
+    contact?: string;
   }[];
 };
 
@@ -43,6 +47,12 @@ export const Home: React.FC<Props> = ({
     }
   };
 
+  const openNewWindow = (url: string) => {
+    if (typeof window !== 'undefined') {
+      window.open(url, 'blank');
+    }
+  };
+
   const [themeMode, setThemeMode] = useState<string>();
 
   useEffect(() => {
@@ -60,6 +70,14 @@ export const Home: React.FC<Props> = ({
     observer.observe(document.body, { attributes: true });
   }, []);
 
+  const renderAuthor = (author: string, contact: string) => {
+    return author ? (
+      <span className="dashboard-author" onClick={() => openNewWindow(contact)}>
+        ❤️ Made by <span>{author}</span>
+      </span>
+    ) : null;
+  };
+
   return (
     <div className="home-page">
       <div className="dashboard-container">
@@ -73,11 +91,9 @@ export const Home: React.FC<Props> = ({
                 })`,
               }}
               key={`${idx}`}
+              onClick={() => gotoDashboard(path)}
             >
-              <span
-                className="dashboard-description"
-                onClick={() => gotoDashboard(path)}
-              >
+              <span className="dashboard-description">
                 <span>{name}</span>
               </span>
             </div>
@@ -88,28 +104,32 @@ export const Home: React.FC<Props> = ({
         <div>
           <h2>Gallery</h2>
           <div className="dashboard-container">
-            {charts.map(({ image, name, path, darkImage, badge }, idx) => {
-              return (
-                <Badge.Ribbon text={badge || 'Other'}>
-                  <div
-                    className={`dashboard-item ${!path ? 'disable' : ''}`}
-                    style={{
-                      backgroundImage: `url(${
-                        (themeMode === 'dark' && darkImage) || image
-                      })`,
-                    }}
-                    key={`${idx}`}
-                  >
-                    <span
-                      className="dashboard-description"
+            {charts.map(
+              (
+                { image, name, path, darkImage, badge, author, contact },
+                idx
+              ) => {
+                return (
+                  <Badge.Ribbon text={badge || 'Other'}>
+                    <div
+                      className={`dashboard-item ${!path ? 'disable' : ''}`}
+                      style={{
+                        backgroundImage: `url(${
+                          (themeMode === 'dark' && darkImage) || image
+                        })`,
+                      }}
+                      key={`${idx}`}
                       onClick={() => gotoDashboard(path)}
                     >
-                      <span>{name}</span>
-                    </span>
-                  </div>
-                </Badge.Ribbon>
-              );
-            })}
+                      <span className="dashboard-description">
+                        <span>{name}</span>
+                      </span>
+                    </div>
+                    <div>{renderAuthor(author, contact)}</div>
+                  </Badge.Ribbon>
+                );
+              }
+            )}
           </div>
         </div>
       ) : null}
@@ -117,26 +137,27 @@ export const Home: React.FC<Props> = ({
         <div>
           <h2>Third party charts</h2>
           <div className="dashboard-container">
-            {thirdPartyCharts.map(({ image, name, url, badge }, idx) => {
-              return (
-                <Badge.Ribbon text={badge || 'Other'}>
-                  <div
-                    className={`dashboard-item`}
-                    style={{
-                      backgroundImage: `url(${image})`,
-                    }}
-                    key={`${idx}`}
-                  >
-                    <span
-                      className="dashboard-description"
+            {thirdPartyCharts.map(
+              ({ image, name, url, badge, author, contact }, idx) => {
+                return (
+                  <Badge.Ribbon text={badge || 'Other'}>
+                    <div
+                      className={`dashboard-item`}
+                      style={{
+                        backgroundImage: `url(${image})`,
+                      }}
+                      key={`${idx}`}
                       onClick={() => openUrl(url)}
                     >
-                      <span>{name}</span>
-                    </span>
-                  </div>
-                </Badge.Ribbon>
-              );
-            })}
+                      <span className="dashboard-description">
+                        <span>{name}</span>
+                      </span>
+                    </div>
+                    <div>{renderAuthor(author, contact)}</div>
+                  </Badge.Ribbon>
+                );
+              }
+            )}
           </div>
         </div>
       ) : null}
