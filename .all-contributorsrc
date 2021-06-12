@@ -1,0 +1,14 @@
+{
+  "projectName": "vis-dashboard",
+  "projectOwner": "antvis",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 60,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [],
+  "contributorsPerLine": 7
+}
