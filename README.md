@@ -59,6 +59,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://www.zhihu.com/people/visiky"><img src="https://avatars.githubusercontent.com/u/15646325?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Visiky</b></sub></a><br /><a href="#projectManagement-visiky" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/yp0413150120"><img src="https://avatars.githubusercontent.com/u/24318174?v=4?s=60" width="60px;" alt=""/><br /><sub><b>banli</b></sub></a><br /><a href="https://github.com/antvis/vis-dashboard/commits?author=yp0413150120" title="Code">💻</a></td>
   </tr>
 </table>
 
