@@ -7,7 +7,7 @@
     "README.md"
   ],
   "imageSize": 32,
-  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img class=\"avatar-user\" src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
+  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img class=\"avatar-user\" src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><div><sub><b><%= contributor.name %></b></sub></div></a>",
   "commit": true,
   "commitConvention": "none",
   "contributors": [
@@ -17,7 +17,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/15646325?v=4",
       "profile": "https://www.zhihu.com/people/visiky",
       "contributions": [
-        "projectManagement"
+        "projectManagement",
+        "code",
+        "design",
+        "ideas"
       ]
     },
     {
@@ -39,5 +42,5 @@
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 10
 }
