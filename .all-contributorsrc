@@ -9,6 +9,16 @@
   "imageSize": 60,
   "commit": true,
   "commitConvention": "none",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "visiky",
+      "name": "Visiky",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15646325?v=4",
+      "profile": "https://www.zhihu.com/people/visiky",
+      "contributions": [
+        "projectManagement"
+      ]
+    }
+  ],
   "contributorsPerLine": 7
 }

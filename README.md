@@ -56,6 +56,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://www.zhihu.com/people/visiky"><img src="https://avatars.githubusercontent.com/u/15646325?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Visiky</b></sub></a><br /><a href="#projectManagement-visiky" title="Project Management">📆</a></td>
+  </tr>
+</table>
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
