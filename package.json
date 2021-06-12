@@ -13,7 +13,9 @@
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "contributors:add": "all-contributors add",
+    "contributors:check": "all-contributors check"
   },
   "dependencies": {
     "@ant-design/icons": "^4.5.0",

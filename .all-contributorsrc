@@ -6,7 +6,8 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 60,
+  "imageSize": 32,
+  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img class=\"avatar-user" src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
   "commit": true,
   "commitConvention": "none",
   "contributors": [
