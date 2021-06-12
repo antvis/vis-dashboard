@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://vis-dashboard.antv.vision">📺 网站地址</a> •
+  <a href="https://vis-dashboard.antv.vision">📺 Website</a> •
   <a href="https://github.com/antvis/g2">G2</a> •
   <a href="https://github.com/antvis/g2plot">G2Plot</a>
 </p>
@@ -13,7 +13,7 @@ Vis Dashboard 收集了一些基于 G2、G2Plot 构建的 dashboard 可视化精
 ![Latest commit](https://badgen.net/github/last-commit/antvis/G2Plot)
 [![build Status](https://github.com/antvis/G2Plot/workflows/build/badge.svg?branch=master)](https://github.com/antvis/G2Plot/actions?query=workflow%3Abuild)
 
-## ⌨️ 本地开发
+## ⌨️ Development
 
 ```bash
 # 克隆仓库
@@ -30,7 +30,7 @@ npm install && npm start
 # 🏄 contribute your dashboard as what do in [dashboard-a](./src/pages/dashboard-a)
 ```
 
-## 👏 参与贡献
+## 👏 How to Contribute
 
 如何贡献 Examples 呢？可以参照 [贡献 pizza plot](https://github.com/antvis/vis-dashboard/pull/18)，你需要做以下 2 件事情：
 
@@ -39,17 +39,7 @@ npm install && npm start
 1. `examples` 目录下，新增您的 example 文件
 2. `examples/meta.json` 补全 example 的元信息，含示例截图 & 使用的技术栈（使用 badge 标识，G2Plot 或 G2）
 
-## 📧 联系我们
-
-钉钉群：30233731
-
-<img src="https://gw.alipayobjects.com/zos/antfincdn/9sHnl5k%26u4/dingdingqun.png" width="200" height="266" />
-
-## License
-
-MIT
-
-## Contributors ✨
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -71,3 +61,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+## 📧 Contact us
+
+DingTalk：30233731
+
+<img src="https://gw.alipayobjects.com/zos/antfincdn/9sHnl5k%26u4/dingdingqun.png" width="200" height="266" />
+
+## License
+
+MIT

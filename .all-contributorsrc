@@ -7,7 +7,7 @@
     "README.md"
   ],
   "imageSize": 32,
-  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img class=\"avatar-user\" src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><sub><b><%= contributor.name %></b></sub></a>",
+  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img class=\"avatar-user\" src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
   "commit": true,
   "commitConvention": "none",
   "contributors": [
@@ -36,15 +36,6 @@
       "profile": "https://wongjorie.top/",
       "contributions": [
         "code"
-      ]
-    },
-    {
-      "login": "xrkffgg",
-      "name": "xrkffgg",
-      "avatar_url": "https://avatars.githubusercontent.com/u/29775873?v=4",
-      "profile": "https://github.com/xrkffgg",
-      "contributions": [
-        "maintenance"
       ]
     }
   ],
